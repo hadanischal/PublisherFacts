@@ -20,24 +20,16 @@ class NetworkManager {
     var parser: JSONParser { return JSONParser() }
     
     func request(url: String, parameters: [String : Any]?, completion:@escaping QueryResult) {
-        // 1
         dataTask?.cancel()
-        // 2
         if var urlComponents = URLComponents(string: "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json") {
-            // 3
             guard let url = urlComponents.url else { return }
-            // 4
             dataTask = defaultSession.dataTask(with: url) { data, response, error in
                 defer { self.dataTask = nil }
-                // 5
                 if let error = error {
                     self.errorMessage += "DataTask error: " + error.localizedDescription + "\n"
                 } else if let data = data,
                     let response = response as? HTTPURLResponse,
                     response.statusCode == 200 {
-                    
-                    print(data)
-                    // 6
                     DispatchQueue.main.async {
                         let response = self.parser.JSONObject(data: data)
                         print(response)
@@ -45,7 +37,6 @@ class NetworkManager {
                     }
                 }
             }
-            // 7
             dataTask?.resume()
         }
     }

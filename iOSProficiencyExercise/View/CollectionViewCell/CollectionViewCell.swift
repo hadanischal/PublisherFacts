@@ -15,7 +15,7 @@ class CollectionViewCell: UICollectionViewCell {
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var rowImage: UIImageView!
     
-    func displayContent(title: String,description: String,imageRef: URL) {
+    func displayContent(title: String,description: String,imageRef: String) {
         titleLabel.text = title
         descriptionLabel.text = description
         

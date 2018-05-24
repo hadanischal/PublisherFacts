@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     var responseResults:[ListModel] = [ListModel]()
     
     let networkManager = NetworkManager()
+    let util = Util()
     typealias JSONDictionary = [String: Any]
     
     
@@ -99,11 +100,7 @@ extension ViewController: UICollectionViewDataSource,UICollectionViewDelegate {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! CollectionViewCell
         
         let data = self.responseResults[indexPath.row]
-        
-       // cell.displayContent(title: data.title,description: data.description,imageRef: data.imageRef)
-        
-        //(image: store.images[indexPath.row], title: book.name!)
-        
+        cell.displayContent(title: data.title,description: data.description,imageRef: data.imageRef)
         return cell
         
     }
@@ -142,12 +139,11 @@ extension ViewController{
         
         for properties in list {
             let dictionary = properties as? JSONDictionary
-            let title = (dictionary!["title"] as? String)
-            let description = dictionary!["description"] as? String
-            let imageURLString = dictionary!["imageHref"] as? String
-            let imageURL = URL(string: "")
-            
-            let currentData = ListModel(title: title, description: description, imageRef: imageURL)
+            let title = util.filterNil(dictionary!["title"] as AnyObject) as! String
+            let description = util.filterNil(dictionary!["description"] as AnyObject) as! String
+            let imageRef = util.filterNil(dictionary!["imageHref"] as AnyObject) as! String
+ 
+            let currentData = ListModel(title: title, description: description, imageRef: imageRef)
             self.responseResults.append(currentData)
         }
         
