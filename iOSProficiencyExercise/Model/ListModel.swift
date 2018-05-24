@@ -1,5 +1,5 @@
 //
-//  Model.swift
+//  ListModel.swift
 //  iOSProficiencyExercise
 //
 //  Created by Nischal Hada on 5/24/18.
@@ -8,12 +8,12 @@
 
 import Foundation
 
- struct Model {
+struct ListModel {
     
     let title: String?
     let description: String?
     let imageRef: URL?
- 
+    
     init(title: String?,description: String?,imageRef: URL?) {
         self.title = title
         self.description = description
