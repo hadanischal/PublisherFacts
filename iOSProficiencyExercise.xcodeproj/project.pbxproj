@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AF83566220B636EE00DA035A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83566120B636EE00DA035A /* AppDelegate.swift */; };
-		AF83566420B636EE00DA035A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83566320B636EE00DA035A /* ViewController.swift */; };
-		AF83566720B636EE00DA035A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF83566520B636EE00DA035A /* Main.storyboard */; };
+		AF494C6420B63972005BECBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF494C6320B63972005BECBE /* Main.storyboard */; };
+		AF494C6620B639B3005BECBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF494C6520B639B3005BECBE /* LaunchScreen.storyboard */; };
 		AF83566A20B636EE00DA035A /* iOSProficiencyExercise.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF83566820B636EE00DA035A /* iOSProficiencyExercise.xcdatamodeld */; };
-		AF83566C20B636EE00DA035A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF83566B20B636EE00DA035A /* Assets.xcassets */; };
-		AF83566F20B636EE00DA035A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF83566D20B636EE00DA035A /* LaunchScreen.storyboard */; };
 		AF83567A20B636EE00DA035A /* iOSProficiencyExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83567920B636EE00DA035A /* iOSProficiencyExerciseTests.swift */; };
 		AF83568520B636EE00DA035A /* iOSProficiencyExerciseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83568420B636EE00DA035A /* iOSProficiencyExerciseUITests.swift */; };
+		AF83569920B6375B00DA035A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83569720B6375B00DA035A /* AppDelegate.swift */; };
+		AF83569D20B637AA00DA035A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF83569C20B637AA00DA035A /* Assets.xcassets */; };
+		AF83569F20B6386300DA035A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83569E20B6386300DA035A /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,13 +35,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AF494C6320B63972005BECBE /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		AF494C6520B639B3005BECBE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF83565E20B636EE00DA035A /* iOSProficiencyExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSProficiencyExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AF83566120B636EE00DA035A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AF83566320B636EE00DA035A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		AF83566620B636EE00DA035A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AF83566920B636EE00DA035A /* iOSProficiencyExercise.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSProficiencyExercise.xcdatamodel; sourceTree = "<group>"; };
-		AF83566B20B636EE00DA035A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AF83566E20B636EE00DA035A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF83567020B636EE00DA035A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF83567520B636EE00DA035A /* iOSProficiencyExerciseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSProficiencyExerciseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF83567920B636EE00DA035A /* iOSProficiencyExerciseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSProficiencyExerciseTests.swift; sourceTree = "<group>"; };
@@ -49,6 +46,9 @@
 		AF83568020B636EE00DA035A /* iOSProficiencyExerciseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSProficiencyExerciseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF83568420B636EE00DA035A /* iOSProficiencyExerciseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSProficiencyExerciseUITests.swift; sourceTree = "<group>"; };
 		AF83568620B636EE00DA035A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF83569720B6375B00DA035A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AF83569C20B637AA00DA035A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AF83569E20B6386300DA035A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,11 +99,12 @@
 		AF83566020B636EE00DA035A /* iOSProficiencyExercise */ = {
 			isa = PBXGroup;
 			children = (
-				AF83566120B636EE00DA035A /* AppDelegate.swift */,
-				AF83566320B636EE00DA035A /* ViewController.swift */,
-				AF83566520B636EE00DA035A /* Main.storyboard */,
-				AF83566B20B636EE00DA035A /* Assets.xcassets */,
-				AF83566D20B636EE00DA035A /* LaunchScreen.storyboard */,
+				AF83569620B6375B00DA035A /* AppDelegate */,
+				AF83569320B6375B00DA035A /* Controller */,
+				AF83569520B6375B00DA035A /* Model */,
+				AF83569420B6375B00DA035A /* View */,
+				AF83569220B6375B00DA035A /* Networking */,
+				AF83569B20B637AA00DA035A /* Resources */,
 				AF83567020B636EE00DA035A /* Info.plist */,
 				AF83566820B636EE00DA035A /* iOSProficiencyExercise.xcdatamodeld */,
 			);
@@ -126,6 +127,53 @@
 				AF83568620B636EE00DA035A /* Info.plist */,
 			);
 			path = iOSProficiencyExerciseUITests;
+			sourceTree = "<group>";
+		};
+		AF83569220B6375B00DA035A /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		AF83569320B6375B00DA035A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AF83569E20B6386300DA035A /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		AF83569420B6375B00DA035A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AF494C6320B63972005BECBE /* Main.storyboard */,
+				AF494C6520B639B3005BECBE /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AF83569520B6375B00DA035A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AF83569620B6375B00DA035A /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				AF83569720B6375B00DA035A /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		AF83569B20B637AA00DA035A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AF83569C20B637AA00DA035A /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,9 +283,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF83566F20B636EE00DA035A /* LaunchScreen.storyboard in Resources */,
-				AF83566C20B636EE00DA035A /* Assets.xcassets in Resources */,
-				AF83566720B636EE00DA035A /* Main.storyboard in Resources */,
+				AF494C6620B639B3005BECBE /* LaunchScreen.storyboard in Resources */,
+				AF494C6420B63972005BECBE /* Main.storyboard in Resources */,
+				AF83569D20B637AA00DA035A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,9 +310,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF83569F20B6386300DA035A /* ViewController.swift in Sources */,
+				AF83569920B6375B00DA035A /* AppDelegate.swift in Sources */,
 				AF83566A20B636EE00DA035A /* iOSProficiencyExercise.xcdatamodeld in Sources */,
-				AF83566420B636EE00DA035A /* ViewController.swift in Sources */,
-				AF83566220B636EE00DA035A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,25 +346,6 @@
 			targetProxy = AF83568120B636EE00DA035A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		AF83566520B636EE00DA035A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AF83566620B636EE00DA035A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		AF83566D20B636EE00DA035A /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AF83566E20B636EE00DA035A /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		AF83568720B636EE00DA035A /* Debug */ = {
@@ -433,6 +462,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9MRVAKM7YL;
 				INFOPLIST_FILE = iOSProficiencyExercise/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Nischalhada.iOSProficiencyExercise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -448,6 +478,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9MRVAKM7YL;
 				INFOPLIST_FILE = iOSProficiencyExercise/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Nischalhada.iOSProficiencyExercise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
