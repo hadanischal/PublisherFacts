@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AF494C6420B63972005BECBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF494C6320B63972005BECBE /* Main.storyboard */; };
-		AF494C6620B639B3005BECBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF494C6520B639B3005BECBE /* LaunchScreen.storyboard */; };
+		AF12AC5820B63C1900157B83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF12AC5620B63C1900157B83 /* LaunchScreen.storyboard */; };
+		AF12AC5920B63C1900157B83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF12AC5720B63C1900157B83 /* Main.storyboard */; };
+		AF12AC5D20B63C8800157B83 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AC5C20B63C8800157B83 /* CollectionViewCell.swift */; };
+		AF12AC5F20B63D2700157B83 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AC5E20B63D2700157B83 /* Networking.swift */; };
+		AF12AC6120B63D6000157B83 /* Audiobook.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AC6020B63D6000157B83 /* Audiobook.swift */; };
+		AF12AC6320B63D8F00157B83 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AC6220B63D8F00157B83 /* DataStore.swift */; };
+		AF12AC6620B6499900157B83 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AC6520B6499900157B83 /* Optional.swift */; };
+		AF12AC6820B649BA00157B83 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AC6720B649BA00157B83 /* Dictionary.swift */; };
+		AF13E10220B6574A00380DC5 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF13E10120B6574A00380DC5 /* Model.swift */; };
 		AF83566A20B636EE00DA035A /* iOSProficiencyExercise.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF83566820B636EE00DA035A /* iOSProficiencyExercise.xcdatamodeld */; };
 		AF83567A20B636EE00DA035A /* iOSProficiencyExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83567920B636EE00DA035A /* iOSProficiencyExerciseTests.swift */; };
 		AF83568520B636EE00DA035A /* iOSProficiencyExerciseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83568420B636EE00DA035A /* iOSProficiencyExerciseUITests.swift */; };
@@ -35,8 +42,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AF494C6320B63972005BECBE /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		AF494C6520B639B3005BECBE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AF12AC5620B63C1900157B83 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AF12AC5720B63C1900157B83 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		AF12AC5C20B63C8800157B83 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		AF12AC5E20B63D2700157B83 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		AF12AC6020B63D6000157B83 /* Audiobook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audiobook.swift; sourceTree = "<group>"; };
+		AF12AC6220B63D8F00157B83 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		AF12AC6520B6499900157B83 /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
+		AF12AC6720B649BA00157B83 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		AF13E10120B6574A00380DC5 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		AF83565E20B636EE00DA035A /* iOSProficiencyExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSProficiencyExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF83566920B636EE00DA035A /* iOSProficiencyExercise.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSProficiencyExercise.xcdatamodel; sourceTree = "<group>"; };
 		AF83567020B636EE00DA035A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,6 +90,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF12AC5520B63C1900157B83 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				AF12AC5720B63C1900157B83 /* Main.storyboard */,
+				AF12AC5620B63C1900157B83 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		AF12AC5A20B63C6D00157B83 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AF12AC5B20B63C6D00157B83 /* CollectionViewCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AF12AC5B20B63C6D00157B83 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				AF12AC5C20B63C8800157B83 /* CollectionViewCell.swift */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		AF12AC6420B6497200157B83 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				AF12AC6520B6499900157B83 /* Optional.swift */,
+				AF12AC6720B649BA00157B83 /* Dictionary.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		AF83565520B636EE00DA035A = {
 			isa = PBXGroup;
 			children = (
@@ -100,10 +148,12 @@
 			isa = PBXGroup;
 			children = (
 				AF83569620B6375B00DA035A /* AppDelegate */,
-				AF83569320B6375B00DA035A /* Controller */,
+				AF12AC5A20B63C6D00157B83 /* View */,
 				AF83569520B6375B00DA035A /* Model */,
-				AF83569420B6375B00DA035A /* View */,
+				AF83569320B6375B00DA035A /* Controller */,
+				AF12AC5520B63C1900157B83 /* Storyboard */,
 				AF83569220B6375B00DA035A /* Networking */,
+				AF12AC6420B6497200157B83 /* Extension */,
 				AF83569B20B637AA00DA035A /* Resources */,
 				AF83567020B636EE00DA035A /* Info.plist */,
 				AF83566820B636EE00DA035A /* iOSProficiencyExercise.xcdatamodeld */,
@@ -132,6 +182,8 @@
 		AF83569220B6375B00DA035A /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				AF12AC5E20B63D2700157B83 /* Networking.swift */,
+				AF12AC6220B63D8F00157B83 /* DataStore.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -144,18 +196,11 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		AF83569420B6375B00DA035A /* View */ = {
-			isa = PBXGroup;
-			children = (
-				AF494C6320B63972005BECBE /* Main.storyboard */,
-				AF494C6520B639B3005BECBE /* LaunchScreen.storyboard */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		AF83569520B6375B00DA035A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AF12AC6020B63D6000157B83 /* Audiobook.swift */,
+				AF13E10120B6574A00380DC5 /* Model.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -283,9 +328,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF494C6620B639B3005BECBE /* LaunchScreen.storyboard in Resources */,
-				AF494C6420B63972005BECBE /* Main.storyboard in Resources */,
+				AF12AC5920B63C1900157B83 /* Main.storyboard in Resources */,
 				AF83569D20B637AA00DA035A /* Assets.xcassets in Resources */,
+				AF12AC5820B63C1900157B83 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,9 +355,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF12AC6320B63D8F00157B83 /* DataStore.swift in Sources */,
 				AF83569F20B6386300DA035A /* ViewController.swift in Sources */,
+				AF12AC5F20B63D2700157B83 /* Networking.swift in Sources */,
 				AF83569920B6375B00DA035A /* AppDelegate.swift in Sources */,
+				AF12AC6120B63D6000157B83 /* Audiobook.swift in Sources */,
+				AF13E10220B6574A00380DC5 /* Model.swift in Sources */,
+				AF12AC6820B649BA00157B83 /* Dictionary.swift in Sources */,
+				AF12AC5D20B63C8800157B83 /* CollectionViewCell.swift in Sources */,
 				AF83566A20B636EE00DA035A /* iOSProficiencyExercise.xcdatamodeld in Sources */,
+				AF12AC6620B6499900157B83 /* Optional.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
