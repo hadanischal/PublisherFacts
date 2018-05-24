@@ -17,6 +17,8 @@
 		AF147E6B20B6E19C00B91F2E /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF147E6A20B6E19C00B91F2E /* ListModel.swift */; };
 		AF147E6D20B6E43B00B91F2E /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF147E6C20B6E43B00B91F2E /* String.swift */; };
 		AF147E6F20B6E86100B91F2E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = AF147E6E20B6E86100B91F2E /* .gitignore */; };
+		AF147E7220B6F16D00B91F2E /* ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF147E7120B6F16D00B91F2E /* ThemeColor.swift */; };
+		AF147E7420B6F1BE00B91F2E /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF147E7320B6F1BE00B91F2E /* UIColor.swift */; };
 		AF83566A20B636EE00DA035A /* iOSProficiencyExercise.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF83566820B636EE00DA035A /* iOSProficiencyExercise.xcdatamodeld */; };
 		AF83567A20B636EE00DA035A /* iOSProficiencyExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83567920B636EE00DA035A /* iOSProficiencyExerciseTests.swift */; };
 		AF83568520B636EE00DA035A /* iOSProficiencyExerciseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83568420B636EE00DA035A /* iOSProficiencyExerciseUITests.swift */; };
@@ -53,6 +55,8 @@
 		AF147E6A20B6E19C00B91F2E /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
 		AF147E6C20B6E43B00B91F2E /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		AF147E6E20B6E86100B91F2E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		AF147E7120B6F16D00B91F2E /* ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
+		AF147E7320B6F1BE00B91F2E /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		AF83565E20B636EE00DA035A /* iOSProficiencyExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSProficiencyExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF83566920B636EE00DA035A /* iOSProficiencyExercise.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSProficiencyExercise.xcdatamodel; sourceTree = "<group>"; };
 		AF83567020B636EE00DA035A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -123,8 +127,17 @@
 				AF12AC6520B6499900157B83 /* Optional.swift */,
 				AF12AC6720B649BA00157B83 /* Dictionary.swift */,
 				AF147E6C20B6E43B00B91F2E /* String.swift */,
+				AF147E7320B6F1BE00B91F2E /* UIColor.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		AF147E7020B6F15800B91F2E /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				AF147E7120B6F16D00B91F2E /* ThemeColor.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		AF83565520B636EE00DA035A = {
@@ -159,6 +172,7 @@
 				AF83569220B6375B00DA035A /* Networking */,
 				AF12AC6420B6497200157B83 /* Extension */,
 				AF83569B20B637AA00DA035A /* Resources */,
+				AF147E7020B6F15800B91F2E /* Constants */,
 				AF83567020B636EE00DA035A /* Info.plist */,
 				AF83566820B636EE00DA035A /* iOSProficiencyExercise.xcdatamodeld */,
 			);
@@ -360,11 +374,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF147E6D20B6E43B00B91F2E /* String.swift in Sources */,
+				AF147E7420B6F1BE00B91F2E /* UIColor.swift in Sources */,
 				AF83569F20B6386300DA035A /* ViewController.swift in Sources */,
 				AF83569920B6375B00DA035A /* AppDelegate.swift in Sources */,
 				AF147E6920B6D26700B91F2E /* JSONParser.swift in Sources */,
 				AF147E6520B6CCC800B91F2E /* NetworkManager.swift in Sources */,
 				AF12AC6820B649BA00157B83 /* Dictionary.swift in Sources */,
+				AF147E7220B6F16D00B91F2E /* ThemeColor.swift in Sources */,
 				AF12AC5D20B63C8800157B83 /* CollectionViewCell.swift in Sources */,
 				AF147E6B20B6E19C00B91F2E /* ListModel.swift in Sources */,
 				AF83566A20B636EE00DA035A /* iOSProficiencyExercise.xcdatamodeld in Sources */,

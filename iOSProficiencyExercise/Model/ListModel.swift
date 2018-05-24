@@ -10,11 +10,11 @@ import Foundation
 
 struct ListModel {
     
-    let title: String?
-    let description: String?
-    let imageRef: URL?
+    let title: String!
+    let description: String!
+    let imageRef: URL!
     
-    init(title: String?,description: String?,imageRef: URL?) {
+    init(title: String!,description: String!,imageRef: URL!) {
         self.title = title
         self.description = description
         self.imageRef = imageRef

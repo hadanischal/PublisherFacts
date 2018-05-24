@@ -10,12 +10,17 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet var bookImage: UIImageView!
-    @IBOutlet var bookLabel: UILabel!
+    @IBOutlet weak var bagroundView: UIView!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var descriptionLabel: UILabel!
+    @IBOutlet var rowImage: UIImageView!
     
-    func displayContent(image: UIImage, title: String) {
-        bookImage.image = image
-        bookLabel.text = title
+    func displayContent(title: String,description: String,imageRef: URL) {
+        titleLabel.text = title
+        descriptionLabel.text = description
+        
+        // rowImage.image = image
+        
     }
     
 }
