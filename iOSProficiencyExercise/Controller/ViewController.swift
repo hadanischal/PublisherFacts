@@ -126,13 +126,25 @@ extension ViewController : UICollectionViewDelegateFlowLayout {
     
 }
 
+
+//MARK: - CustomLayout Delegate
+//extension ViewController : CustomLayoutDelegate {
+//
+//    // 1. Returns the photo height
+//    func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath:IndexPath) -> CGFloat {
+//        return photos[indexPath.item].image.size.height
+//    }
+//
+//}
+
+
 extension ViewController{
     
     func serviceCall() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         let url = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
         
-        networkManager.request(url: url, parameters: nil){ results, errorMessage in
+        networkManager.request(URLString: url, parameters: nil){ results, errorMessage in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             if let response = results {
                 print(results ?? "")
@@ -147,7 +159,6 @@ extension ViewController{
 
                 self.collectionView.reloadData()
             }
-            if !errorMessage.isEmpty { print("Search error: " + errorMessage) }
         }
     }
     
@@ -172,3 +183,18 @@ extension ViewController{
     
 }
 
+/*
+ {
+ super.viewDidLoad()
+ 
+ if let patternImage = UIImage(named: "Pattern") {
+ view.backgroundColor = UIColor(patternImage: patternImage)
+ }
+ collectionView?.backgroundColor = UIColor.clear
+ collectionView?.contentInset = UIEdgeInsets(top: 23, left: 10, bottom: 10, right: 10)
+ // Set the PinterestLayout delegate
+ if let layout = collectionView?.collectionViewLayout as? PinterestLayout {
+ layout.delegate = self
+ }
+ }
+ */
