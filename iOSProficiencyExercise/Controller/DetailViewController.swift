@@ -15,21 +15,61 @@ final class DetailViewController: UIViewController {
     fileprivate let portraitReuseIdentifier = "PortraitTableViewCell"
     fileprivate let landscapeReuseIdentifier = "LandscapeTableViewCell"
     fileprivate let kLazyLoadPlaceholderImage = UIImage(named: "placeholder")!
-    
     private let kLazyLoadCollectionCellImage = 1
-    private let kLazyLoadCollectionCellText = 2
     
     @IBOutlet weak var tableView: UITableView!
     fileprivate let imageManager = ImageManager()
     
-    // data
     var data: ListModel!
+    var currentDeviceOrientation: UIDeviceOrientation = .unknown
+    
     
 }
 
 extension DetailViewController{
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        self.setupUI()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIDevice.current.beginGeneratingDeviceOrientationNotifications()
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceDidRotate), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        // Initial device orientation
+        self.currentDeviceOrientation = UIDevice.current.orientation
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        if UIDevice.current.isGeneratingDeviceOrientationNotifications {
+            UIDevice.current.endGeneratingDeviceOrientationNotifications()
+        }
+    }
+    
+    @objc func deviceDidRotate(notification: NSNotification) {
+        self.currentDeviceOrientation = UIDevice.current.orientation
+        self.tableView.reloadData()
+    }
+    
+    
+}
+
+
+
+// MARK:
+// MARK: Setup UI
+
+extension DetailViewController {
+    
+    func setupUI() {
         super.viewDidLoad()
         self.navigationItem.title = data.title
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -39,14 +79,7 @@ extension DetailViewController{
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
 }
-
 // MARK: - UITableViewDataSource
 
 extension DetailViewController:UITableViewDataSource {
@@ -56,12 +89,20 @@ extension DetailViewController:UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: landscapeReuseIdentifier, for: indexPath) as! LandscapeTableViewCell
-        cell.descriptionLabel.text = data.description
-        updateImageForCell(cell, inTableView: tableView, imageURL:data.imageRef, atIndexPath: indexPath)
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
-        return cell
         
+        if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: portraitReuseIdentifier, for: indexPath) as! PortraitTableViewCell
+            cell.descriptionLabel.text = data.description
+            updateImageForCell(cell, inTableView: tableView, imageURL:data.imageRef, atIndexPath: indexPath)
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            return cell
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: landscapeReuseIdentifier, for: indexPath) as! LandscapeTableViewCell
+            cell.descriptionLabel.text = data.description
+            updateImageForCell(cell, inTableView: tableView, imageURL:data.imageRef, atIndexPath: indexPath)
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {}
@@ -104,12 +145,12 @@ extension DetailViewController {
     }
     
     func loadImagesForOnscreenRows() {
-            let visiblePaths = tableView.indexPathsForVisibleRows ?? [IndexPath]()
-            for indexPath in visiblePaths {
-                let cell = tableView(self.tableView, cellForRowAt: indexPath)
-                updateImageForCell(cell, inTableView: tableView, imageURL: data.imageRef, atIndexPath: indexPath)
-            }
+        let visiblePaths = tableView.indexPathsForVisibleRows ?? [IndexPath]()
+        for indexPath in visiblePaths {
+            let cell = tableView(self.tableView, cellForRowAt: indexPath)
+            updateImageForCell(cell, inTableView: tableView, imageURL: data.imageRef, atIndexPath: indexPath)
         }
+    }
     
     // MARK: - When decelerated or ended dragging, we must update visible rows
     
@@ -120,6 +161,6 @@ extension DetailViewController {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate { loadImagesForOnscreenRows() }
     }
-
+    
     
 }

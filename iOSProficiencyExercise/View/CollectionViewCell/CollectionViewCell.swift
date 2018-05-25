@@ -18,11 +18,6 @@ class CollectionViewCell: UICollectionViewCell {
     func displayContent(title: String,description: String,imageRef: String) {
         titleLabel.text = title
         descriptionLabel.text = description
-//        if !imageRef.isEmpty{
-//            rowImage.downloadedFrom(imageRef)
-//        }else{
-//            rowImage.image = UIImage(named:"placeholderImage")
-//        }
     }
     
 }
