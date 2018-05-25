@@ -29,5 +29,24 @@ extension UIImageView {
     }
 }
 
+
+extension UIImageView {
+     func imageFromServerURL(urlString: String) {
+        
+        URLSession.shared.dataTask(with: NSURL(string: urlString)! as URL, completionHandler: { (data, response, error) -> Void in
+            
+            if error != nil {
+                print(error ?? "")
+                return
+            }
+            DispatchQueue.main.async(execute: { () -> Void in
+                let image = UIImage(data: data!)
+                self.image = image
+            })
+            
+        }).resume()
+    }}
+
+//UIImageView.imageFromServerURL("here server url") .
 //imageView.downloadedFrom(link: "http://www.apple.com/euro/ios/ios8/a/generic/images/og.png")
 

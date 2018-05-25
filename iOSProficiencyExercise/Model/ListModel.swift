@@ -6,18 +6,20 @@
 //  Copyright © 2018 NischalHada. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-struct ListModel {
+class ListModel {
     
     let title: String!
     let description: String!
     let imageRef: String!
-    
-    init(title: String!,description: String!,imageRef: String!) {
+ 
+    init (title: String,description: String,imageRef: String) {
         self.title = title
         self.description = description
         self.imageRef = imageRef
     }
     
 }
+
+

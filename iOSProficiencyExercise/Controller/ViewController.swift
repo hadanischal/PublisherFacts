@@ -14,20 +14,22 @@ final class ViewController: UIViewController {
     fileprivate let reuseIdentifier = "collectionViewCell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     fileprivate let itemsPerRow: CGFloat = 2
-
+    
     fileprivate var responseResults = [ListModel]()
+    var images: [UIImage] = []
+    
     fileprivate let util = Util()
     fileprivate let networkManager = NetworkManager()
     typealias JSONDictionary = [String: Any]
     @IBOutlet var collectionView: UICollectionView!
-
+    
 }
 
 
 // MARK: - Private
 
 extension ViewController {
- 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.serviceCall()
@@ -68,10 +70,9 @@ extension ViewController: UICollectionViewDataSource,UICollectionViewDelegate {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! CollectionViewCell
         let data = self.responseResults[indexPath.row]
         cell.displayContent(title: data.title,description: data.description,imageRef: data.imageRef)
-        if !data.imageRef.isEmpty{
-            cell.rowImage.downloadedFrom(data.imageRef)
-        }else{
-            cell.rowImage.image = UIImage(named:"placeholderImage")
+        cell.rowImage.imageFromServerURL(urlString: data.imageRef)
+        if images.count != 0{
+            cell.rowImage.image = images[indexPath.row]
         }
         return cell
         
@@ -155,24 +156,29 @@ extension ViewController{
                     return
                 }
                 self.setupNavigationTitle(title)
-                self.setupResponseList(array as [Any])
-
-                self.collectionView.reloadData()
+                self.setupResponseList(array as [Any],completion: {
+                    self.getImages(completion: {
+                        self.collectionView.reloadData()
+                    })
+                    
+                })
+                
             }
         }
     }
     
-    func setupResponseList (_ list :[Any] ) {
+    func setupResponseList (_ list :[Any], completion: @escaping () -> Void) {
         
         for properties in list {
             let dictionary = properties as? JSONDictionary
             let title = util.filterNil(dictionary!["title"] as AnyObject) as! String
             let description = util.filterNil(dictionary!["description"] as AnyObject) as! String
             let imageRef = util.filterNil(dictionary!["imageHref"] as AnyObject) as! String
- 
             let currentData = ListModel(title: title, description: description, imageRef: imageRef)
             self.responseResults.append(currentData)
         }
+        self.collectionView.reloadData()
+        
         
     }
     
@@ -180,6 +186,34 @@ extension ViewController{
         let title = util.filterNil(title as AnyObject) as! String
         self.title = title
     }
+    
+    
+    func getImages(completion: @escaping () -> Void) {
+        
+        for properties in self.responseResults {
+            guard let URLString = properties.imageRef,
+                let imageData = try? Data(contentsOf: URL(string:URLString)! as URL) else {
+                    break
+            }
+            if let image = UIImage(data: imageData) {
+                self.images.append(image)
+                
+            }else{
+                let image = UIImage(named:"placeholderImage")
+                self.images.append(image!)
+            }
+            
+            //            let url = URL(string: properties.imageRef)
+            //            let data = try? Data(contentsOf: url!)
+            //            if let imageData = data {
+            //                let image = UIImage(data: imageData)
+            //                self.images.append(image!)
+            //            }
+        }
+        completion()
+        
+    }
+    
     
 }
 
@@ -197,4 +231,15 @@ extension ViewController{
  layout.delegate = self
  }
  }
+ */
+
+/*
+ guard let URLString = dictionary!["imageHref"],
+ let imageData = try? Data(contentsOf: URL(string:URLString as! String)! as URL) else {
+ break
+ }
+ if let image = UIImage(data: imageData) {
+ currentData.thumbnail = image
+ }
+ 
  */
