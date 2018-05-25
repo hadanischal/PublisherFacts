@@ -18,4 +18,8 @@ extension String {
         }
     }
     
+    var isNullOrEmpty: Bool {
+        return self.isEmpty
+    }
+
 }

@@ -18,7 +18,6 @@ class Util {
 
 extension Util: Utility {
     func filterNil(_ value : AnyObject?) -> AnyObject? {
-        //print(value)
         if value is NSNull || value == nil {
             return "" as AnyObject
         } else {

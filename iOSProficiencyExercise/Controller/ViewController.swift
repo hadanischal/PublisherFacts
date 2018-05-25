@@ -8,15 +8,26 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    @IBOutlet var collectionView: UICollectionView!
-    var responseResults:[ListModel] = [ListModel]()
+final class ViewController: UIViewController {
     
-    let networkManager = NetworkManager()
-    let util = Util()
+    // MARK: - Properties
+    fileprivate let reuseIdentifier = "collectionViewCell"
+    fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+    fileprivate let itemsPerRow: CGFloat = 2
+
+    fileprivate var responseResults = [ListModel]()
+    fileprivate let util = Util()
+    fileprivate let networkManager = NetworkManager()
     typealias JSONDictionary = [String: Any]
-    
-    
+    @IBOutlet var collectionView: UICollectionView!
+
+}
+
+
+// MARK: - Private
+
+extension ViewController {
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.serviceCall()
@@ -43,6 +54,37 @@ class ViewController: UIViewController {
 
 
 
+extension ViewController: UICollectionViewDataSource,UICollectionViewDelegate {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return responseResults.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! CollectionViewCell
+        let data = self.responseResults[indexPath.row]
+        cell.displayContent(title: data.title,description: data.description,imageRef: data.imageRef)
+        if !data.imageRef.isEmpty{
+            cell.rowImage.downloadedFrom(data.imageRef)
+        }else{
+            cell.rowImage.image = UIImage(named:"placeholderImage")
+        }
+        return cell
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    }
+    
+}
+
+
+
+
 // MARK: UICollectionViewDelegateFlowLayout
 
 extension ViewController : UICollectionViewDelegateFlowLayout {
@@ -63,19 +105,18 @@ extension ViewController : UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
-        
-        let width  = collectionView.frame.size.width * 0.49
-        let height = collectionView.frame.size.height * 0.25
-        return CGSize(width: width, height: height)
+        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow
+        return CGSize(width: widthPerItem, height: widthPerItem)
     }
     
-    // (top: CGFloat, left: CGFloat, bottom: CGFloat, right: CGFloat)
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets{
-        return UIEdgeInsetsMake(1, 1, 0, 1)
+        return sectionInsets
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat{
-        return 5
+        return sectionInsets.left
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat{
@@ -84,32 +125,6 @@ extension ViewController : UICollectionViewDelegateFlowLayout {
     }
     
 }
-
-extension ViewController: UICollectionViewDataSource,UICollectionViewDelegate {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.responseResults.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! CollectionViewCell
-        
-        let data = self.responseResults[indexPath.row]
-        cell.displayContent(title: data.title,description: data.description,imageRef: data.imageRef)
-        return cell
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    }
-    
-}
-
 
 extension ViewController{
     
@@ -121,11 +136,15 @@ extension ViewController{
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             if let response = results {
                 print(results ?? "")
-                guard let array = response["rows"] as? [Any] else {
-                    // let errorMessage = "Dictionary does not contain rows"
+                guard let title = response["title"]else {
                     return
                 }
+                guard let array = response["rows"] as? [Any] else {
+                    return
+                }
+                self.setupNavigationTitle(title)
                 self.setupResponseList(array as [Any])
+
                 self.collectionView.reloadData()
             }
             if !errorMessage.isEmpty { print("Search error: " + errorMessage) }
@@ -133,9 +152,6 @@ extension ViewController{
     }
     
     func setupResponseList (_ list :[Any] ) {
-        
-        print("list:",list)
-        
         
         for properties in list {
             let dictionary = properties as? JSONDictionary
@@ -147,6 +163,11 @@ extension ViewController{
             self.responseResults.append(currentData)
         }
         
+    }
+    
+    func setupNavigationTitle (_ title :Any ) {
+        let title = util.filterNil(title as AnyObject) as! String
+        self.title = title
     }
     
 }
