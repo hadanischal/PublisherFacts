@@ -16,6 +16,9 @@ class LandscapeTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.thumbnailImage.contentMode =   UIViewContentMode.scaleAspectFill
+        self.thumbnailImage .clipsToBounds =  true
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

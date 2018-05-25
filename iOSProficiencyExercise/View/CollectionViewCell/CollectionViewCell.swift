@@ -17,6 +17,9 @@ class CollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.bagroundView.backgroundColor = ThemeColor.contentViewBackgroundColor
+        self.rowImage.contentMode =   UIViewContentMode.scaleAspectFill
+        self.rowImage .clipsToBounds =  true
+        
     }
     
     func displayContent(title: String,description: String,imageRef: String) {

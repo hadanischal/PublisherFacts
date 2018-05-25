@@ -131,25 +131,22 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LandscapeTableViewCell" rowHeight="70" id="wmS-2q-u2J" customClass="LandscapeTableViewCell" customModule="iOSProficiencyExercise" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="70"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LandscapeTableViewCell" rowHeight="167" id="wmS-2q-u2J" customClass="LandscapeTableViewCell" customModule="iOSProficiencyExercise" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="167"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wmS-2q-u2J" id="YTh-gl-Jbm">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="166.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="CIA-7E-tJ7">
-                                                    <rect key="frame" x="8" y="8" width="48" height="48"/>
+                                                    <rect key="frame" x="8" y="8" width="150" height="150"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="48" id="H2t-Mz-j7z"/>
-                                                        <constraint firstAttribute="width" constant="48" id="m76-8X-fL7"/>
+                                                        <constraint firstAttribute="height" constant="150" id="pBg-HW-pf7"/>
+                                                        <constraint firstAttribute="width" constant="150" id="yzv-F3-NWc"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zra-yl-1MP">
-                                                    <rect key="frame" x="64" y="8" width="303" height="53.5"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="53.5" id="GmY-rl-4KS"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="166" y="8" width="201" height="151"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -157,12 +154,13 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="Zra-yl-1MP" secondAttribute="trailing" constant="8" id="0fD-jg-Slg"/>
-                                                <constraint firstItem="Zra-yl-1MP" firstAttribute="top" secondItem="YTh-gl-Jbm" secondAttribute="top" constant="8" id="6vO-4q-U93"/>
-                                                <constraint firstItem="CIA-7E-tJ7" firstAttribute="leading" secondItem="YTh-gl-Jbm" secondAttribute="leading" constant="8" id="9oL-7i-QDu"/>
-                                                <constraint firstItem="CIA-7E-tJ7" firstAttribute="top" secondItem="YTh-gl-Jbm" secondAttribute="top" constant="8" id="CsE-3u-ADY"/>
-                                                <constraint firstAttribute="bottom" secondItem="Zra-yl-1MP" secondAttribute="bottom" constant="8" id="mNu-Hx-YL8"/>
-                                                <constraint firstItem="Zra-yl-1MP" firstAttribute="leading" secondItem="CIA-7E-tJ7" secondAttribute="trailing" constant="8" id="zYU-7M-K6s"/>
+                                                <constraint firstItem="CIA-7E-tJ7" firstAttribute="top" secondItem="YTh-gl-Jbm" secondAttribute="top" constant="8" id="6S7-6A-0j7"/>
+                                                <constraint firstAttribute="bottom" secondItem="CIA-7E-tJ7" secondAttribute="bottom" constant="8" id="GPO-Xg-yhD"/>
+                                                <constraint firstItem="Zra-yl-1MP" firstAttribute="leading" secondItem="CIA-7E-tJ7" secondAttribute="trailing" constant="8" id="Gtm-qa-IrZ"/>
+                                                <constraint firstItem="CIA-7E-tJ7" firstAttribute="leading" secondItem="YTh-gl-Jbm" secondAttribute="leading" constant="8" id="UMu-rr-QyO"/>
+                                                <constraint firstAttribute="bottom" secondItem="Zra-yl-1MP" secondAttribute="bottom" constant="8" id="hLm-T9-Mph"/>
+                                                <constraint firstItem="Zra-yl-1MP" firstAttribute="top" secondItem="YTh-gl-Jbm" secondAttribute="top" constant="8" id="mbG-8U-GU1"/>
+                                                <constraint firstAttribute="trailing" secondItem="Zra-yl-1MP" secondAttribute="trailing" constant="8" id="nrf-eP-yye"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -171,7 +169,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PortraitTableViewCell" rowHeight="417" id="22A-ez-fz7" customClass="PortraitTableViewCell" customModule="iOSProficiencyExercise" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="98" width="375" height="417"/>
+                                        <rect key="frame" x="0.0" y="195" width="375" height="417"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="22A-ez-fz7" id="ZwS-Sp-if6">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="416.5"/>
@@ -230,7 +228,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ltg-11-k0t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1768.125" y="-102.46478873239437"/>
+            <point key="canvasLocation" x="1767.2" y="-102.99850074962519"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FfR-AX-B57">

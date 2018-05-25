@@ -15,15 +15,11 @@ final class ViewController: UIViewController {
     // MARK: - Properties
     fileprivate let reuseIdentifier = "collectionViewCell"
     fileprivate let segueIdentifier = "toDetailViewController"
-
+    
     fileprivate let sectionInsets = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
     fileprivate let itemsPerRow: CGFloat = 2
     
-    fileprivate let kLazyLoadScreenSize = UIScreen.main.bounds.height
     fileprivate let kLazyLoadCellImageViewTag = 1
-    fileprivate let kLazyLoadSpan: CGFloat = 10.0
-    fileprivate let kLazyLoadAspectRatio: CGFloat = 1.0 // width / height aspect ratio for non square cells.
-    fileprivate let kLazyLoadColumnsPerRow: CGFloat = 3.0 // number of columns for every row.
     fileprivate let kLazyLoadPlaceholderImage = UIImage(named: "placeholder")!
     
     fileprivate var responseResults = [ListModel]()
@@ -80,11 +76,11 @@ extension ViewController {
     func setupUI() {
         self.collectionView.dataSource = self
         let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-//        self.collectionView.collectionViewLayout = layout
-//        layout.minimumLineSpacing = 0
-//        layout.minimumInteritemSpacing = 0 //0.0
+        //        self.collectionView.collectionViewLayout = layout
+        //        layout.minimumLineSpacing = 0
+        //        layout.minimumInteritemSpacing = 0 //0.0
         self.collectionView.backgroundColor = ThemeColor.collectionViewBackgroundColor
-    //    self.collectionView.isPagingEnabled = true
+        //    self.collectionView.isPagingEnabled = true
         self.collectionView.showsHorizontalScrollIndicator = false
         
         
@@ -106,7 +102,7 @@ extension ViewController: UICollectionViewDataSource,UICollectionViewDelegate {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! CollectionViewCell
         let data = self.responseResults[indexPath.row]
         cell.displayContent(title: data.title,description: data.description,imageRef: data.imageRef)
-        updateImageForCell(cell, inCollectionView: collectionView, withEntry: data.imageRef, atIndexPath: indexPath)
+        updateImageForCell(cell, inCollectionView: collectionView, imageURL: data.imageRef, atIndexPath: indexPath)
         return cell
         
     }
@@ -128,7 +124,7 @@ extension ViewController : UICollectionViewDelegateFlowLayout {
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
         let heightPerItem = widthPerItem + 21
-
+        
         return CGSize(width: widthPerItem, height: heightPerItem)
     }
     
@@ -160,7 +156,7 @@ extension ViewController : UICollectionViewDelegateFlowLayout {
 
 extension ViewController{
     
-    func updateImageForCell(_ cell: UICollectionViewCell, inCollectionView collectionView: UICollectionView, withEntry: String, atIndexPath indexPath: IndexPath) {
+    func updateImageForCell(_ cell: UICollectionViewCell, inCollectionView collectionView: UICollectionView, imageURL: String, atIndexPath indexPath: IndexPath) {
         let imageView = cell.viewWithTag(kLazyLoadCellImageViewTag) as! UIImageView
         imageView.image = kLazyLoadPlaceholderImage
         let data = self.responseResults[indexPath.row]
@@ -169,6 +165,7 @@ extension ViewController{
         let imageURL = data.imageRef
         imageManager.downloadImageFromURL(imageURL!) { (success, image) -> Void in
             if success && image != nil {
+                print(image)
                 if (collectionView.indexPath(for: cell) as NSIndexPath?)?.row == (indexPath as NSIndexPath).row {
                     imageView.image = image
                 }
@@ -179,14 +176,15 @@ extension ViewController{
     // MARK: - Lazy Loading of cells
     
     func loadImagesForOnscreenRows() {
-        if responseResults.count > 0 {
-            let visiblePaths = collectionView.indexPathsForVisibleItems
-            for indexPath in visiblePaths {
-                let data = self.responseResults[indexPath.row]
-                let cell = collectionView(self.collectionView, cellForItemAt: indexPath)
-                updateImageForCell(cell, inCollectionView: collectionView, withEntry: data.imageRef, atIndexPath: indexPath)
-            }
-        }
+//        if responseResults.count > 0 {
+//            let visiblePaths = collectionView.indexPathsForVisibleItems
+//            for indexPath in visiblePaths {
+//                let data = self.responseResults[indexPath.row]
+//                let cell = collectionView(self.collectionView, cellForItemAt: indexPath)
+//                updateImageForCell(cell, inCollectionView: collectionView, imageURL: data.imageRef, atIndexPath: indexPath)
+//            }
+//        }
+        self.collectionView.reloadData()
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

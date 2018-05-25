@@ -16,6 +16,9 @@ class PortraitTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.bannerImage.contentMode =   UIViewContentMode.scaleAspectFill
+        self.bannerImage .clipsToBounds =  true
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
