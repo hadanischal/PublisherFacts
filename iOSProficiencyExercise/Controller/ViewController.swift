@@ -8,34 +8,21 @@
 
 import UIKit
 
-
-
 final class ViewController: UIViewController {
-    
-    // MARK: - Properties
     fileprivate let reuseIdentifier = "collectionViewCell"
     fileprivate let segueIdentifier = "toDetailViewController"
-    
+    fileprivate let kLazyLoadPlaceholderImage = UIImage(named: "placeholder")!
     fileprivate let sectionInsets = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
     fileprivate let itemsPerRow: CGFloat = 2
-    
     fileprivate let kLazyLoadCellImageViewTag = 1
-    fileprivate let kLazyLoadPlaceholderImage = UIImage(named: "placeholder")!
-    
-    fileprivate var responseResults = [ListModel]()
-    var images: [UIImage] = []
-    
     fileprivate let util = Util()
     fileprivate let networkManager = NetworkManager()
     fileprivate let imageManager = ImageManager()
-    
     typealias JSONDictionary = [String: Any]
+    fileprivate var responseResults = [ListModel]()
+    var images: [UIImage] = []
     @IBOutlet var collectionView: UICollectionView!
-    
 }
-
-
-// MARK: - Private
 
 extension ViewController {
     
@@ -50,12 +37,8 @@ extension ViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
     // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == segueIdentifier {
             let indexPath = (sender as! IndexPath);
             let data :ListModel = self.responseResults[indexPath.row] as ListModel
@@ -72,20 +55,11 @@ extension ViewController {
 // MARK: Setup UI
 
 extension ViewController {
-    
     func setupUI() {
         self.collectionView.dataSource = self
-        let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        //        self.collectionView.collectionViewLayout = layout
-        //        layout.minimumLineSpacing = 0
-        //        layout.minimumInteritemSpacing = 0 //0.0
         self.collectionView.backgroundColor = ThemeColor.collectionViewBackgroundColor
-        //    self.collectionView.isPagingEnabled = true
         self.collectionView.showsHorizontalScrollIndicator = false
-        
-        
     }
-    
 }
 
 extension ViewController: UICollectionViewDataSource,UICollectionViewDelegate {
@@ -104,19 +78,14 @@ extension ViewController: UICollectionViewDataSource,UICollectionViewDelegate {
         cell.displayContent(title: data.title,description: data.description,imageRef: data.imageRef)
         updateImageForCell(cell, inCollectionView: collectionView, imageURL: data.imageRef, atIndexPath: indexPath)
         return cell
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: segueIdentifier, sender: indexPath)
     }
-    
 }
 
-
-
 // MARK: UICollectionViewDelegateFlowLayout
-
 extension ViewController : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
@@ -143,29 +112,16 @@ extension ViewController : UICollectionViewDelegateFlowLayout {
     
 }
 
-
-//MARK: - CustomLayout Delegate
-//extension ViewController : CustomLayoutDelegate {
-//
-//    // 1. Returns the photo height
-//    func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath:IndexPath) -> CGFloat {
-//        return photos[indexPath.item].image.size.height
-//    }
-//
-//}
-
 extension ViewController{
     
     func updateImageForCell(_ cell: UICollectionViewCell, inCollectionView collectionView: UICollectionView, imageURL: String, atIndexPath indexPath: IndexPath) {
         let imageView = cell.viewWithTag(kLazyLoadCellImageViewTag) as! UIImageView
         imageView.image = kLazyLoadPlaceholderImage
         let data = self.responseResults[indexPath.row]
-        
         // load image.
         let imageURL = data.imageRef
         imageManager.downloadImageFromURL(imageURL!) { (success, image) -> Void in
             if success && image != nil {
-                print(image)
                 if (collectionView.indexPath(for: cell) as NSIndexPath?)?.row == (indexPath as NSIndexPath).row {
                     imageView.image = image
                 }
@@ -174,16 +130,7 @@ extension ViewController{
     }
     
     // MARK: - Lazy Loading of cells
-    
     func loadImagesForOnscreenRows() {
-//        if responseResults.count > 0 {
-//            let visiblePaths = collectionView.indexPathsForVisibleItems
-//            for indexPath in visiblePaths {
-//                let data = self.responseResults[indexPath.row]
-//                let cell = collectionView(self.collectionView, cellForItemAt: indexPath)
-//                updateImageForCell(cell, inCollectionView: collectionView, imageURL: data.imageRef, atIndexPath: indexPath)
-//            }
-//        }
         self.collectionView.reloadData()
     }
     
@@ -198,11 +145,9 @@ extension ViewController{
 
 
 extension ViewController{
-    
     func serviceCall() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         let url = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
-        
         networkManager.request(URLString: url, parameters: nil){ results, errorMessage in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             if let response = results {
@@ -215,13 +160,11 @@ extension ViewController{
                 }
                 self.setupNavigationTitle(title)
                 self.setupResponseList(array as [Any])
-                
             }
         }
     }
     
     func setupResponseList (_ list :[Any]) {
-        
         for properties in list {
             let dictionary = properties as? JSONDictionary
             let title = util.filterNil(dictionary!["title"] as AnyObject) as! String
@@ -231,19 +174,10 @@ extension ViewController{
             self.responseResults.append(currentData)
         }
         self.collectionView.reloadData()
-        
-        
     }
     
     func setupNavigationTitle (_ title :Any ) {
         let title = util.filterNil(title as AnyObject) as! String
         self.title = title
     }
-    
-    
-    
 }
-
-
-
-

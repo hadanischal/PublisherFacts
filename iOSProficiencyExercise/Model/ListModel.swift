@@ -9,11 +9,9 @@
 import UIKit
 
 class ListModel {
-    
     let title: String!
     let description: String!
     let imageRef: String!
- 
     init (title: String,description: String,imageRef: String) {
         self.title = title
         self.description = description

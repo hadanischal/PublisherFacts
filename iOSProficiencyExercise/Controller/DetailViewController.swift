@@ -8,22 +8,15 @@
 
 import UIKit
 
-
 final class DetailViewController: UIViewController {
-    
-    // MARK: - Properties
     fileprivate let portraitReuseIdentifier = "PortraitTableViewCell"
     fileprivate let landscapeReuseIdentifier = "LandscapeTableViewCell"
     fileprivate let kLazyLoadPlaceholderImage = UIImage(named: "placeholder")!
-    private let kLazyLoadCollectionCellImage = 1
-    
-    @IBOutlet weak var tableView: UITableView!
-    fileprivate let imageManager = ImageManager()
-    
-    var data: ListModel!
     var currentDeviceOrientation: UIDeviceOrientation = .unknown
-    
-    
+    private let kLazyLoadCollectionCellImage = 1
+    fileprivate let imageManager = ImageManager()
+    var data: ListModel!
+    @IBOutlet weak var tableView: UITableView!
 }
 
 extension DetailViewController{
@@ -35,7 +28,6 @@ extension DetailViewController{
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,8 +50,6 @@ extension DetailViewController{
         self.currentDeviceOrientation = UIDevice.current.orientation
         self.tableView.reloadData()
     }
-    
-    
 }
 
 
@@ -68,7 +58,6 @@ extension DetailViewController{
 // MARK: Setup UI
 
 extension DetailViewController {
-    
     func setupUI() {
         self.navigationItem.title = data.title
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -77,7 +66,6 @@ extension DetailViewController {
         self.view.backgroundColor = ThemeColor.white
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
-    
 }
 // MARK: - UITableViewDataSource
 
@@ -88,7 +76,6 @@ extension DetailViewController:UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
             let cell = tableView.dequeueReusableCell(withIdentifier: portraitReuseIdentifier, for: indexPath) as! PortraitTableViewCell
             cell.descriptionLabel.text = data.description
@@ -111,7 +98,6 @@ extension DetailViewController:UITableViewDataSource {
 // MARK: - TableViewDelegate Setup
 
 extension DetailViewController : UITableViewDelegate{
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

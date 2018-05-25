@@ -9,22 +9,16 @@
 import UIKit
 
 class PortraitTableViewCell: UITableViewCell {
-    
     @IBOutlet var bannerImage: UIImageView!
     @IBOutlet var descriptionLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         self.bannerImage.contentMode =   UIViewContentMode.scaleAspectFill
         self.bannerImage .clipsToBounds =  true
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
     }
-    
 }
