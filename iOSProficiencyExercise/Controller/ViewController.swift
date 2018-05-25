@@ -14,7 +14,9 @@ final class ViewController: UIViewController {
     
     // MARK: - Properties
     fileprivate let reuseIdentifier = "collectionViewCell"
-    fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+    fileprivate let segueIdentifier = "toDetailViewController"
+
+    fileprivate let sectionInsets = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
     fileprivate let itemsPerRow: CGFloat = 2
     
     fileprivate let kLazyLoadScreenSize = UIScreen.main.bounds.height
@@ -43,6 +45,7 @@ extension ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupUI()
         self.serviceCall()
     }
     
@@ -57,20 +60,37 @@ extension ViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "toDetailViewController" {
+        if segue.identifier == segueIdentifier {
             let indexPath = (sender as! IndexPath);
             let data :ListModel = self.responseResults[indexPath.row] as ListModel
             if let controller = segue.destination as? DetailViewController {
                 controller.data = data
             }
         }
-        
     }
     
 }
 
 
+// MARK:
+// MARK: Setup UI
 
+extension ViewController {
+    
+    func setupUI() {
+        self.collectionView.dataSource = self
+        let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+//        self.collectionView.collectionViewLayout = layout
+//        layout.minimumLineSpacing = 0
+//        layout.minimumInteritemSpacing = 0 //0.0
+        self.collectionView.backgroundColor = ThemeColor.collectionViewBackgroundColor
+    //    self.collectionView.isPagingEnabled = true
+        self.collectionView.showsHorizontalScrollIndicator = false
+        
+        
+    }
+    
+}
 
 extension ViewController: UICollectionViewDataSource,UICollectionViewDelegate {
     
@@ -92,35 +112,24 @@ extension ViewController: UICollectionViewDataSource,UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "toDetailViewController", sender: indexPath)
+        self.performSegue(withIdentifier: segueIdentifier, sender: indexPath)
     }
     
 }
+
+
 
 // MARK: UICollectionViewDelegateFlowLayout
 
 extension ViewController : UICollectionViewDelegateFlowLayout {
     
-    func CollectionViewSetUp() -> Void{
-        
-        self.collectionView.dataSource = self
-        let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.scrollDirection = UICollectionViewScrollDirection.vertical
-        self.collectionView.collectionViewLayout = layout
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0 //0.0
-        self.collectionView.backgroundColor = ThemeColor.collectionViewBackgroundColor
-        self.collectionView.isPagingEnabled = true
-        self.collectionView.showsHorizontalScrollIndicator = false
-        
-        
-    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
-        return CGSize(width: widthPerItem, height: widthPerItem)
+        let heightPerItem = widthPerItem + 21
+
+        return CGSize(width: widthPerItem, height: heightPerItem)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets{

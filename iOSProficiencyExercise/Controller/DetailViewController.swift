@@ -70,7 +70,6 @@ extension DetailViewController{
 extension DetailViewController {
     
     func setupUI() {
-        super.viewDidLoad()
         self.navigationItem.title = data.title
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none

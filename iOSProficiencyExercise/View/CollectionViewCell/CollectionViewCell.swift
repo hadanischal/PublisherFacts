@@ -12,12 +12,15 @@ class CollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var bagroundView: UIView!
     @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var rowImage: UIImageView!
+ 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.bagroundView.backgroundColor = ThemeColor.contentViewBackgroundColor
+    }
     
     func displayContent(title: String,description: String,imageRef: String) {
         titleLabel.text = title
-        descriptionLabel.text = description
     }
     
 }
