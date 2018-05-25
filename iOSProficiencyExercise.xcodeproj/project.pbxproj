@@ -23,6 +23,7 @@
 		AF17DE8320B798B9006AB7E5 /* AppTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF17DE8220B798B9006AB7E5 /* AppTarget.swift */; };
 		AF17DE8520B79F07006AB7E5 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF17DE8420B79F07006AB7E5 /* UIImageView.swift */; };
 		AF17DE8820B7ACC5006AB7E5 /* CustomLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF17DE8720B7ACC5006AB7E5 /* CustomLayout.swift */; };
+		AF19CF8B20B7DEC6004B9BC8 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19CF8A20B7DEC6004B9BC8 /* ImageManager.swift */; };
 		AF83566A20B636EE00DA035A /* iOSProficiencyExercise.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF83566820B636EE00DA035A /* iOSProficiencyExercise.xcdatamodeld */; };
 		AF83567A20B636EE00DA035A /* iOSProficiencyExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83567920B636EE00DA035A /* iOSProficiencyExerciseTests.swift */; };
 		AF83568520B636EE00DA035A /* iOSProficiencyExerciseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83568420B636EE00DA035A /* iOSProficiencyExerciseUITests.swift */; };
@@ -65,6 +66,7 @@
 		AF17DE8220B798B9006AB7E5 /* AppTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTarget.swift; sourceTree = "<group>"; };
 		AF17DE8420B79F07006AB7E5 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		AF17DE8720B7ACC5006AB7E5 /* CustomLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLayout.swift; sourceTree = "<group>"; };
+		AF19CF8A20B7DEC6004B9BC8 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		AF83565E20B636EE00DA035A /* iOSProficiencyExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSProficiencyExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF83566920B636EE00DA035A /* iOSProficiencyExercise.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSProficiencyExercise.xcdatamodel; sourceTree = "<group>"; };
 		AF83567020B636EE00DA035A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				AF147E6420B6CCC800B91F2E /* NetworkManager.swift */,
 				AF147E6820B6D26700B91F2E /* JSONParser.swift */,
 				AF17DE8220B798B9006AB7E5 /* AppTarget.swift */,
+				AF19CF8A20B7DEC6004B9BC8 /* ImageManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF147E6D20B6E43B00B91F2E /* String.swift in Sources */,
+				AF19CF8B20B7DEC6004B9BC8 /* ImageManager.swift in Sources */,
 				AF17DE8520B79F07006AB7E5 /* UIImageView.swift in Sources */,
 				AF147E7420B6F1BE00B91F2E /* UIColor.swift in Sources */,
 				AF83569F20B6386300DA035A /* ViewController.swift in Sources */,

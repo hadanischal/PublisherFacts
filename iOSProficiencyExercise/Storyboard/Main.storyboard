@@ -41,7 +41,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tII-07-6GW">
                                                     <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholderImage" translatesAutoresizingMaskIntoConstraints="NO" id="zdh-ef-mmg">
+                                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="zdh-ef-mmg">
                                                             <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="21j-et-6Sv">
@@ -123,11 +123,30 @@
                     <navigationItem key="navigationItem" id="jNR-c2-jpu"/>
                     <connections>
                         <outlet property="collectionView" destination="Z8y-zg-jgm" id="USQ-Be-Kji"/>
+                        <segue destination="KYv-yf-Oes" kind="show" id="6cf-fS-P2W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qNN-Pw-EbG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="815.20000000000005" y="-102.09895052473765"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="RK5-hb-U0a">
+            <objects>
+                <viewController id="KYv-yf-Oes" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kcG-eQ-bbd"/>
+                        <viewControllerLayoutGuide type="bottom" id="VQn-U2-QWx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="m7z-P9-QXM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ltg-11-k0t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1769" y="-102"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FfR-AX-B57">
@@ -149,6 +168,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="placeholderImage" width="250" height="175"/>
+        <image name="placeholder" width="112" height="112"/>
     </resources>
 </document>

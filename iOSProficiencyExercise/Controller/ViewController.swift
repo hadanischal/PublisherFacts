@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 final class ViewController: UIViewController {
     
     // MARK: - Properties
@@ -15,11 +17,20 @@ final class ViewController: UIViewController {
     fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     fileprivate let itemsPerRow: CGFloat = 2
     
+    fileprivate let kLazyLoadScreenSize = UIScreen.main.bounds.height
+    fileprivate let kLazyLoadCellImageViewTag = 1
+    fileprivate let kLazyLoadSpan: CGFloat = 10.0
+    fileprivate let kLazyLoadAspectRatio: CGFloat = 1.0 // width / height aspect ratio for non square cells.
+    fileprivate let kLazyLoadColumnsPerRow: CGFloat = 3.0 // number of columns for every row.
+    fileprivate let kLazyLoadPlaceholderImage = UIImage(named: "placeholder")!
+
     fileprivate var responseResults = [ListModel]()
     var images: [UIImage] = []
     
     fileprivate let util = Util()
     fileprivate let networkManager = NetworkManager()
+    fileprivate let imageManager = ImageManager()
+
     typealias JSONDictionary = [String: Any]
     @IBOutlet var collectionView: UICollectionView!
     
@@ -70,10 +81,7 @@ extension ViewController: UICollectionViewDataSource,UICollectionViewDelegate {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! CollectionViewCell
         let data = self.responseResults[indexPath.row]
         cell.displayContent(title: data.title,description: data.description,imageRef: data.imageRef)
-        cell.rowImage.imageFromServerURL(urlString: data.imageRef)
-        if images.count != 0{
-            cell.rowImage.image = images[indexPath.row]
-        }
+        updateImageForCell(cell, inCollectionView: collectionView, withEntry: data.imageRef, atIndexPath: indexPath)
         return cell
         
     }
@@ -82,9 +90,6 @@ extension ViewController: UICollectionViewDataSource,UICollectionViewDelegate {
     }
     
 }
-
-
-
 
 // MARK: UICollectionViewDelegateFlowLayout
 
@@ -138,6 +143,46 @@ extension ViewController : UICollectionViewDelegateFlowLayout {
 //
 //}
 
+extension ViewController{
+    
+    func updateImageForCell(_ cell: UICollectionViewCell, inCollectionView collectionView: UICollectionView, withEntry: String, atIndexPath indexPath: IndexPath) {
+        let imageView = cell.viewWithTag(kLazyLoadCellImageViewTag) as! UIImageView
+        imageView.image = kLazyLoadPlaceholderImage
+        let data = self.responseResults[indexPath.row]
+        
+        // load image.
+        let imageURL = data.imageRef
+        imageManager.downloadImageFromURL(imageURL!) { (success, image) -> Void in
+            if success && image != nil {
+                if (collectionView.indexPath(for: cell) as NSIndexPath?)?.row == (indexPath as NSIndexPath).row {
+                    imageView.image = image
+                }
+            }
+        }
+    }
+    
+    // MARK: - Lazy Loading of cells
+    
+    func loadImagesForOnscreenRows() {
+        if responseResults.count > 0 {
+            let visiblePaths = collectionView.indexPathsForVisibleItems
+            for indexPath in visiblePaths {
+                let data = self.responseResults[indexPath.row]
+                let cell = collectionView(self.collectionView, cellForItemAt: indexPath)
+                updateImageForCell(cell, inCollectionView: collectionView, withEntry: data.imageRef, atIndexPath: indexPath)
+            }
+        }
+    }
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        loadImagesForOnscreenRows()
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate { loadImagesForOnscreenRows() }
+    }
+}
+
 
 extension ViewController{
     
@@ -156,18 +201,13 @@ extension ViewController{
                     return
                 }
                 self.setupNavigationTitle(title)
-                self.setupResponseList(array as [Any],completion: {
-                    self.getImages(completion: {
-                        self.collectionView.reloadData()
-                    })
-                    
-                })
+                self.setupResponseList(array as [Any])
                 
             }
         }
     }
     
-    func setupResponseList (_ list :[Any], completion: @escaping () -> Void) {
+    func setupResponseList (_ list :[Any]) {
         
         for properties in list {
             let dictionary = properties as? JSONDictionary
@@ -187,59 +227,10 @@ extension ViewController{
         self.title = title
     }
     
-    
-    func getImages(completion: @escaping () -> Void) {
-        
-        for properties in self.responseResults {
-            guard let URLString = properties.imageRef,
-                let imageData = try? Data(contentsOf: URL(string:URLString)! as URL) else {
-                    break
-            }
-            if let image = UIImage(data: imageData) {
-                self.images.append(image)
-                
-            }else{
-                let image = UIImage(named:"placeholderImage")
-                self.images.append(image!)
-            }
-            
-            //            let url = URL(string: properties.imageRef)
-            //            let data = try? Data(contentsOf: url!)
-            //            if let imageData = data {
-            //                let image = UIImage(data: imageData)
-            //                self.images.append(image!)
-            //            }
-        }
-        completion()
-        
-    }
-    
+   
     
 }
 
-/*
- {
- super.viewDidLoad()
- 
- if let patternImage = UIImage(named: "Pattern") {
- view.backgroundColor = UIColor(patternImage: patternImage)
- }
- collectionView?.backgroundColor = UIColor.clear
- collectionView?.contentInset = UIEdgeInsets(top: 23, left: 10, bottom: 10, right: 10)
- // Set the PinterestLayout delegate
- if let layout = collectionView?.collectionViewLayout as? PinterestLayout {
- layout.delegate = self
- }
- }
- */
 
-/*
- guard let URLString = dictionary!["imageHref"],
- let imageData = try? Data(contentsOf: URL(string:URLString as! String)! as URL) else {
- break
- }
- if let image = UIImage(data: imageData) {
- currentData.thumbnail = image
- }
- 
- */
+
+
