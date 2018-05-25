@@ -23,14 +23,14 @@ final class ViewController: UIViewController {
     fileprivate let kLazyLoadAspectRatio: CGFloat = 1.0 // width / height aspect ratio for non square cells.
     fileprivate let kLazyLoadColumnsPerRow: CGFloat = 3.0 // number of columns for every row.
     fileprivate let kLazyLoadPlaceholderImage = UIImage(named: "placeholder")!
-
+    
     fileprivate var responseResults = [ListModel]()
     var images: [UIImage] = []
     
     fileprivate let util = Util()
     fileprivate let networkManager = NetworkManager()
     fileprivate let imageManager = ImageManager()
-
+    
     typealias JSONDictionary = [String: Any]
     @IBOutlet var collectionView: UICollectionView!
     
@@ -52,15 +52,20 @@ extension ViewController {
     }
     
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toDetailViewController" {
+            let indexPath = (sender as! IndexPath);
+            let data :ListModel = self.responseResults[indexPath.row] as ListModel
+            if let controller = segue.destination as? DetailViewController {
+                controller.data = data
+            }
+        }
+        
+    }
     
 }
 
@@ -87,6 +92,7 @@ extension ViewController: UICollectionViewDataSource,UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "toDetailViewController", sender: indexPath)
     }
     
 }
@@ -173,7 +179,7 @@ extension ViewController{
             }
         }
     }
-
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         loadImagesForOnscreenRows()
     }
@@ -227,7 +233,7 @@ extension ViewController{
         self.title = title
     }
     
-   
+    
     
 }
 
