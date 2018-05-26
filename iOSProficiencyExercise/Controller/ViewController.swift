@@ -75,7 +75,7 @@ extension ViewController: UICollectionViewDataSource,UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! CollectionViewCell
         let data = self.responseResults[indexPath.row]
-        cell.displayContent(title: data.title,description: data.description,imageRef: data.imageRef)
+        cell.displayContent(title: data.title)
         updateImageForCell(cell, inCollectionView: collectionView, imageURL: data.imageRef, atIndexPath: indexPath)
         return cell
     }
