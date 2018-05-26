@@ -8,9 +8,9 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
+class ViewController: UIViewController {
     fileprivate let reuseIdentifier = "collectionViewCell"
-    fileprivate let segueIdentifier = "toDetailViewController"
+    let segueIdentifier = "toDetailViewController"
     fileprivate let kLazyLoadPlaceholderImage = UIImage(named: "placeholder")!
     fileprivate let sectionInsets = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
     fileprivate let itemsPerRow: CGFloat = 2
@@ -19,12 +19,9 @@ final class ViewController: UIViewController {
     fileprivate let networkManager = NetworkManager()
     fileprivate let imageManager = ImageManager()
     typealias JSONDictionary = [String: Any]
-    fileprivate var responseResults = [ListModel]()
+    var responseResults = [ListModel]()
     var images: [UIImage] = []
     @IBOutlet var collectionView: UICollectionView!
-}
-
-extension ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

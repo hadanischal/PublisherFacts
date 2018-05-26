@@ -25,6 +25,7 @@
 		AF19CF8D20B7E66F004B9BC8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19CF8C20B7E66F004B9BC8 /* DetailViewController.swift */; };
 		AF19CF9020B7E827004B9BC8 /* PortraitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19CF8F20B7E827004B9BC8 /* PortraitTableViewCell.swift */; };
 		AF19CF9220B7E840004B9BC8 /* LandscapeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19CF9120B7E840004B9BC8 /* LandscapeTableViewCell.swift */; };
+		AF1BFFA320B8FACD004FEF2B /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1BFFA220B8FACD004FEF2B /* ViewControllerTests.swift */; };
 		AF83566A20B636EE00DA035A /* iOSProficiencyExercise.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF83566820B636EE00DA035A /* iOSProficiencyExercise.xcdatamodeld */; };
 		AF83567A20B636EE00DA035A /* iOSProficiencyExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83567920B636EE00DA035A /* iOSProficiencyExerciseTests.swift */; };
 		AF83568520B636EE00DA035A /* iOSProficiencyExerciseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83568420B636EE00DA035A /* iOSProficiencyExerciseUITests.swift */; };
@@ -69,6 +70,7 @@
 		AF19CF8C20B7E66F004B9BC8 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		AF19CF8F20B7E827004B9BC8 /* PortraitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortraitTableViewCell.swift; sourceTree = "<group>"; };
 		AF19CF9120B7E840004B9BC8 /* LandscapeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandscapeTableViewCell.swift; sourceTree = "<group>"; };
+		AF1BFFA220B8FACD004FEF2B /* ViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTests.swift; sourceTree = "<group>"; };
 		AF83565E20B636EE00DA035A /* iOSProficiencyExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSProficiencyExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF83566920B636EE00DA035A /* iOSProficiencyExercise.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSProficiencyExercise.xcdatamodel; sourceTree = "<group>"; };
 		AF83567020B636EE00DA035A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 		AF83567820B636EE00DA035A /* iOSProficiencyExerciseTests */ = {
 			isa = PBXGroup;
 			children = (
+				AF1BFFA220B8FACD004FEF2B /* ViewControllerTests.swift */,
 				AF83567920B636EE00DA035A /* iOSProficiencyExerciseTests.swift */,
 				AF83567B20B636EE00DA035A /* Info.plist */,
 			);
@@ -440,6 +443,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF1BFFA320B8FACD004FEF2B /* ViewControllerTests.swift in Sources */,
 				AF83567A20B636EE00DA035A /* iOSProficiencyExerciseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
