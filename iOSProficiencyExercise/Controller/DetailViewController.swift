@@ -8,18 +8,13 @@
 
 import UIKit
 
-final class DetailViewController: UIViewController {
+class DetailViewController: UIViewController {
     fileprivate let portraitReuseIdentifier = "PortraitTableViewCell"
     fileprivate let landscapeReuseIdentifier = "LandscapeTableViewCell"
-    fileprivate let kLazyLoadPlaceholderImage = UIImage(named: "placeholder")!
     var currentDeviceOrientation: UIDeviceOrientation = .unknown
-    private let kLazyLoadCollectionCellImage = 1
-    fileprivate let imageManager = ImageManager()
+    fileprivate let dataManager = ListHelper()
     var data: ListModel!
     @IBOutlet weak var tableView: UITableView!
-}
-
-extension DetailViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +29,6 @@ extension DetailViewController{
         super.viewWillAppear(animated)
         UIDevice.current.beginGeneratingDeviceOrientationNotifications()
         NotificationCenter.default.addObserver(self, selector: #selector(deviceDidRotate), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
-        // Initial device orientation
         self.currentDeviceOrientation = UIDevice.current.orientation
     }
     
@@ -51,8 +45,6 @@ extension DetailViewController{
         self.tableView.reloadData()
     }
 }
-
-
 
 // MARK:
 // MARK: Setup UI
@@ -79,13 +71,13 @@ extension DetailViewController:UITableViewDataSource {
         if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
             let cell = tableView.dequeueReusableCell(withIdentifier: portraitReuseIdentifier, for: indexPath) as! PortraitTableViewCell
             cell.descriptionLabel.text = data.description
-            updateImageForCell(cell, inTableView: tableView, imageURL:data.imageRef, atIndexPath: indexPath)
+            dataManager.updateImageForTableViewCell(cell, inTableView: tableView, imageURL:data.imageRef, atIndexPath: indexPath)
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: landscapeReuseIdentifier, for: indexPath) as! LandscapeTableViewCell
             cell.descriptionLabel.text = data.description
-            updateImageForCell(cell, inTableView: tableView, imageURL:data.imageRef, atIndexPath: indexPath)
+            dataManager.updateImageForTableViewCell(cell, inTableView: tableView, imageURL:data.imageRef, atIndexPath: indexPath)
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             return cell
         }
@@ -115,29 +107,13 @@ extension DetailViewController : UITableViewDelegate{
 
 extension DetailViewController {
     
-    func updateImageForCell(_ cell: UITableViewCell, inTableView tableView: UITableView, imageURL: String, atIndexPath indexPath: IndexPath) {
-        // clean image first
-        let imageView = cell.viewWithTag(kLazyLoadCollectionCellImage) as! UIImageView
-        imageView.image = kLazyLoadPlaceholderImage
-        // load image.
-        imageManager.downloadImageFromURL(imageURL) { (success, image) -> Void in
-            if success && image != nil {
-                if (tableView.indexPath(for: cell) as NSIndexPath?)?.row == (indexPath as NSIndexPath).row {
-                    imageView.image = image
-                }
-            }
-        }
-    }
-    
     func loadImagesForOnscreenRows() {
         let visiblePaths = tableView.indexPathsForVisibleRows ?? [IndexPath]()
         for indexPath in visiblePaths {
             let cell = tableView(self.tableView, cellForRowAt: indexPath)
-            updateImageForCell(cell, inTableView: tableView, imageURL: data.imageRef, atIndexPath: indexPath)
+            dataManager.updateImageForTableViewCell(cell, inTableView: tableView, imageURL: data.imageRef, atIndexPath: indexPath)
         }
     }
-    
-    // MARK: - When decelerated or ended dragging, we must update visible rows
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         loadImagesForOnscreenRows()
@@ -146,6 +122,4 @@ extension DetailViewController {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate { loadImagesForOnscreenRows() }
     }
-    
-    
 }

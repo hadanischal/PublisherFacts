@@ -11,11 +11,8 @@ import UIKit
 class ViewController: UIViewController {
     fileprivate let reuseIdentifier = "collectionViewCell"
     let segueIdentifier = "toDetailViewController"
-    fileprivate let kLazyLoadPlaceholderImage = UIImage(named: "placeholder")!
     fileprivate let sectionInsets = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
     fileprivate let itemsPerRow: CGFloat = 2
-    fileprivate let kLazyLoadCellImageViewTag = 1
-    fileprivate let imageManager = ImageManager()
     fileprivate let dataManager = ListHelper()
     @IBOutlet var collectionView: UICollectionView!
     
@@ -72,7 +69,7 @@ extension ViewController: UICollectionViewDataSource,UICollectionViewDelegate {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! CollectionViewCell
         let data = dataManager.responseResults[indexPath.row]
         cell.displayContent(title: data.title)
-        updateImageForCell(cell, inCollectionView: collectionView, imageURL: data.imageRef, atIndexPath: indexPath)
+        dataManager.updateImageForCollectionViewCell(cell, inCollectionView: collectionView, imageURL: data.imageRef, atIndexPath: indexPath)
         return cell
     }
     
@@ -109,21 +106,6 @@ extension ViewController : UICollectionViewDelegateFlowLayout {
 }
 
 extension ViewController{
-    
-    func updateImageForCell(_ cell: UICollectionViewCell, inCollectionView collectionView: UICollectionView, imageURL: String, atIndexPath indexPath: IndexPath) {
-        let imageView = cell.viewWithTag(kLazyLoadCellImageViewTag) as! UIImageView
-        imageView.image = kLazyLoadPlaceholderImage
-        let data = dataManager.responseResults[indexPath.row]
-        // load image.
-        let imageURL = data.imageRef
-        imageManager.downloadImageFromURL(imageURL!) { (success, image) -> Void in
-            if success && image != nil {
-                if (collectionView.indexPath(for: cell) as NSIndexPath?)?.row == (indexPath as NSIndexPath).row {
-                    imageView.image = image
-                }
-            }
-        }
-    }
     
     // MARK: - Lazy Loading of cells
     func loadImagesForOnscreenRows() {
