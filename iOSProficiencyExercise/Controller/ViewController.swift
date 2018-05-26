@@ -15,18 +15,17 @@ class ViewController: UIViewController {
     fileprivate let sectionInsets = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
     fileprivate let itemsPerRow: CGFloat = 2
     fileprivate let kLazyLoadCellImageViewTag = 1
-    fileprivate let util = Util()
-    fileprivate let networkManager = NetworkManager()
     fileprivate let imageManager = ImageManager()
-    typealias JSONDictionary = [String: Any]
-    var responseResults = [ListModel]()
-    var images: [UIImage] = []
+    fileprivate let dataManager = ListHelper()
     @IBOutlet var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
-        self.serviceCall()
+        dataManager.apiCall {
+            self.navigationItem.title = self.dataManager.title
+            self.collectionView.reloadData()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -38,7 +37,7 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == segueIdentifier {
             let indexPath = (sender as! IndexPath);
-            let data :ListModel = self.responseResults[indexPath.row] as ListModel
+            let data :ListModel = dataManager.responseResults[indexPath.row] as ListModel
             if let controller = segue.destination as? DetailViewController {
                 controller.data = data
             }
@@ -66,12 +65,12 @@ extension ViewController: UICollectionViewDataSource,UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return responseResults.count
+        return dataManager.responseResults.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! CollectionViewCell
-        let data = self.responseResults[indexPath.row]
+        let data = dataManager.responseResults[indexPath.row]
         cell.displayContent(title: data.title)
         updateImageForCell(cell, inCollectionView: collectionView, imageURL: data.imageRef, atIndexPath: indexPath)
         return cell
@@ -114,7 +113,7 @@ extension ViewController{
     func updateImageForCell(_ cell: UICollectionViewCell, inCollectionView collectionView: UICollectionView, imageURL: String, atIndexPath indexPath: IndexPath) {
         let imageView = cell.viewWithTag(kLazyLoadCellImageViewTag) as! UIImageView
         imageView.image = kLazyLoadPlaceholderImage
-        let data = self.responseResults[indexPath.row]
+        let data = dataManager.responseResults[indexPath.row]
         // load image.
         let imageURL = data.imageRef
         imageManager.downloadImageFromURL(imageURL!) { (success, image) -> Void in
@@ -141,40 +140,4 @@ extension ViewController{
 }
 
 
-extension ViewController{
-    func serviceCall() {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        let url = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
-        networkManager.request(URLString: url, parameters: nil){ results, errorMessage in
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            if let response = results {
-                print(results ?? "")
-                guard let title = response["title"]else {
-                    return
-                }
-                guard let array = response["rows"] as? [Any] else {
-                    return
-                }
-                self.setupNavigationTitle(title)
-                self.setupResponseList(array as [Any])
-            }
-        }
-    }
-    
-    func setupResponseList (_ list :[Any]) {
-        for properties in list {
-            let dictionary = properties as? JSONDictionary
-            let title = util.filterNil(dictionary!["title"] as AnyObject) as! String
-            let description = util.filterNil(dictionary!["description"] as AnyObject) as! String
-            let imageRef = util.filterNil(dictionary!["imageHref"] as AnyObject) as! String
-            let currentData = ListModel(title: title, description: description, imageRef: imageRef)
-            self.responseResults.append(currentData)
-        }
-        self.collectionView.reloadData()
-    }
-    
-    func setupNavigationTitle (_ title :Any ) {
-        let title = util.filterNil(title as AnyObject) as! String
-        self.title = title
-    }
-}
+

@@ -26,6 +26,8 @@
 		AF19CF9020B7E827004B9BC8 /* PortraitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19CF8F20B7E827004B9BC8 /* PortraitTableViewCell.swift */; };
 		AF19CF9220B7E840004B9BC8 /* LandscapeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19CF9120B7E840004B9BC8 /* LandscapeTableViewCell.swift */; };
 		AF1BFFA320B8FACD004FEF2B /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1BFFA220B8FACD004FEF2B /* ViewControllerTests.swift */; };
+		AF1BFFA520B908B9004FEF2B /* ListHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1BFFA420B908B9004FEF2B /* ListHelper.swift */; };
+		AF1BFFA720B90B1F004FEF2B /* RootViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1BFFA620B90B1F004FEF2B /* RootViewManager.swift */; };
 		AF83566A20B636EE00DA035A /* iOSProficiencyExercise.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF83566820B636EE00DA035A /* iOSProficiencyExercise.xcdatamodeld */; };
 		AF83567A20B636EE00DA035A /* iOSProficiencyExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83567920B636EE00DA035A /* iOSProficiencyExerciseTests.swift */; };
 		AF83568520B636EE00DA035A /* iOSProficiencyExerciseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83568420B636EE00DA035A /* iOSProficiencyExerciseUITests.swift */; };
@@ -71,6 +73,8 @@
 		AF19CF8F20B7E827004B9BC8 /* PortraitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortraitTableViewCell.swift; sourceTree = "<group>"; };
 		AF19CF9120B7E840004B9BC8 /* LandscapeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandscapeTableViewCell.swift; sourceTree = "<group>"; };
 		AF1BFFA220B8FACD004FEF2B /* ViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTests.swift; sourceTree = "<group>"; };
+		AF1BFFA420B908B9004FEF2B /* ListHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHelper.swift; sourceTree = "<group>"; };
+		AF1BFFA620B90B1F004FEF2B /* RootViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewManager.swift; sourceTree = "<group>"; };
 		AF83565E20B636EE00DA035A /* iOSProficiencyExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSProficiencyExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF83566920B636EE00DA035A /* iOSProficiencyExercise.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSProficiencyExercise.xcdatamodel; sourceTree = "<group>"; };
 		AF83567020B636EE00DA035A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				AF147E7620B6F46D00B91F2E /* Util.swift */,
+				AF1BFFA620B90B1F004FEF2B /* RootViewManager.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -263,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				AF147E6A20B6E19C00B91F2E /* ListModel.swift */,
+				AF1BFFA420B908B9004FEF2B /* ListHelper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -420,6 +426,8 @@
 			files = (
 				AF147E6D20B6E43B00B91F2E /* String.swift in Sources */,
 				AF19CF9220B7E840004B9BC8 /* LandscapeTableViewCell.swift in Sources */,
+				AF1BFFA720B90B1F004FEF2B /* RootViewManager.swift in Sources */,
+				AF1BFFA520B908B9004FEF2B /* ListHelper.swift in Sources */,
 				AF19CF8B20B7DEC6004B9BC8 /* ImageManager.swift in Sources */,
 				AF17DE8520B79F07006AB7E5 /* UIImageView.swift in Sources */,
 				AF147E7420B6F1BE00B91F2E /* UIColor.swift in Sources */,
