@@ -1,24 +1,26 @@
 //
-//  ListHelper.swift
+//  ImageHelper.swift
 //  iOSProficiencyExercise
 //
-//  Created by Nischal Hada on 5/26/18.
+//  Created by Nischal Hada on 5/27/18.
 //  Copyright © 2018 NischalHada. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-public protocol dataSession {
+public protocol imageSession {
     func updateImageForTableViewCell(_ cell: UITableViewCell, inTableView tableView: UITableView, imageURL: String, atIndexPath indexPath: IndexPath)
+    func updateImageForCollectionViewCell(_ cell: UICollectionViewCell, inCollectionView collectionView: UICollectionView, imageURL: String, atIndexPath indexPath: IndexPath)
+    
 }
 
-class ListHelper:dataSession{
+class ImageHelper:imageSession{
     
     fileprivate let kLazyLoadCellImageViewTag = 1
     fileprivate let kLazyLoadPlaceholderImage = UIImage(named: "placeholder")!
     var imageManager: ImageManager { return ImageManager() }
-        
+    
     func updateImageForCollectionViewCell(_ cell: UICollectionViewCell, inCollectionView collectionView: UICollectionView, imageURL: String, atIndexPath indexPath: IndexPath) {
         let imageView = cell.viewWithTag(kLazyLoadCellImageViewTag) as! UIImageView
         imageView.image = kLazyLoadPlaceholderImage

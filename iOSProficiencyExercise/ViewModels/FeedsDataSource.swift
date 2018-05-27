@@ -27,7 +27,7 @@ class FeedsDataSource : GenericDataSource<ListModel>, UICollectionViewDataSource
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! CollectionViewCell
         let feedsValue = self.data.value[indexPath.row]
         cell.feedsValue = feedsValue
-        ListHelper().updateImageForCollectionViewCell(cell, inCollectionView: collectionView, imageURL: feedsValue.imageRef, atIndexPath: indexPath)
+        ImageHelper().updateImageForCollectionViewCell(cell, inCollectionView: collectionView, imageURL: feedsValue.imageRef, atIndexPath: indexPath)
         return cell
     }
     

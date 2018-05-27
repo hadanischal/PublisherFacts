@@ -12,7 +12,7 @@ class DetailViewController: UIViewController {
     fileprivate let portraitReuseIdentifier = "PortraitTableViewCell"
     fileprivate let landscapeReuseIdentifier = "LandscapeTableViewCell"
     var currentDeviceOrientation: UIDeviceOrientation = .unknown
-    fileprivate let dataManager = ListHelper()
+    fileprivate let imageHelper = ImageHelper()
     var data: ListModel!
     @IBOutlet weak var tableView: UITableView!
     
@@ -71,13 +71,13 @@ extension DetailViewController:UITableViewDataSource {
         if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
             let cell = tableView.dequeueReusableCell(withIdentifier: portraitReuseIdentifier, for: indexPath) as! PortraitTableViewCell
             cell.descriptionLabel.text = data.description
-            dataManager.updateImageForTableViewCell(cell, inTableView: tableView, imageURL:data.imageRef, atIndexPath: indexPath)
+            imageHelper.updateImageForTableViewCell(cell, inTableView: tableView, imageURL:data.imageRef, atIndexPath: indexPath)
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: landscapeReuseIdentifier, for: indexPath) as! LandscapeTableViewCell
             cell.descriptionLabel.text = data.description
-            dataManager.updateImageForTableViewCell(cell, inTableView: tableView, imageURL:data.imageRef, atIndexPath: indexPath)
+            imageHelper.updateImageForTableViewCell(cell, inTableView: tableView, imageURL:data.imageRef, atIndexPath: indexPath)
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             return cell
         }
@@ -111,7 +111,7 @@ extension DetailViewController {
         let visiblePaths = tableView.indexPathsForVisibleRows ?? [IndexPath]()
         for indexPath in visiblePaths {
             let cell = tableView(self.tableView, cellForRowAt: indexPath)
-            dataManager.updateImageForTableViewCell(cell, inTableView: tableView, imageURL: data.imageRef, atIndexPath: indexPath)
+            imageHelper.updateImageForTableViewCell(cell, inTableView: tableView, imageURL: data.imageRef, atIndexPath: indexPath)
         }
     }
     
