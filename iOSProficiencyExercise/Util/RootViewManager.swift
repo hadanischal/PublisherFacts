@@ -18,10 +18,13 @@ class RootViewManager {}
 extension RootViewManager: ViewManagers {
     func rootView() -> UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let loginView: ViewController = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-        let navigationController = UINavigationController(rootViewController: loginView)
-        let controller = navigationController
-        return controller
+        //        let controller: ViewController = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        let controller: FeedsViewController = storyboard.instantiateViewController(withIdentifier: "FeedsViewController") as! FeedsViewController
+        let navigationController = UINavigationController(rootViewController: controller)
+        return navigationController
+        
     }
+    
 }
+
 

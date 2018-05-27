@@ -10,13 +10,13 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Feeds View Controller-->
         <scene sceneID="Wdy-5K-cpf">
             <objects>
-                <viewController storyboardIdentifier="ViewController" id="u5y-Wt-vKm" customClass="ViewController" customModule="iOSProficiencyExercise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FeedsViewController" id="u5y-Wt-vKm" customClass="FeedsViewController" customModule="iOSProficiencyExercise" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="tvm-bI-P5C"/>
-                        <viewControllerLayoutGuide type="bottom" id="793-nW-6Wj"/>
+                        <viewControllerLayoutGuide type="top" id="qoq-l8-g0E"/>
+                        <viewControllerLayoutGuide type="bottom" id="KfU-cq-wgL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uQy-hy-IdG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -100,7 +100,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Z8y-zg-jgm" firstAttribute="leading" secondItem="uQy-hy-IdG" secondAttribute="leading" id="3p1-Wc-39C"/>
-                            <constraint firstItem="793-nW-6Wj" firstAttribute="top" secondItem="Z8y-zg-jgm" secondAttribute="bottom" id="bSv-lj-jlQ"/>
+                            <constraint firstItem="KfU-cq-wgL" firstAttribute="top" secondItem="Z8y-zg-jgm" secondAttribute="bottom" id="bSv-lj-jlQ"/>
                             <constraint firstItem="Z8y-zg-jgm" firstAttribute="top" secondItem="uQy-hy-IdG" secondAttribute="top" id="lPn-kj-GmK"/>
                             <constraint firstAttribute="trailing" secondItem="Z8y-zg-jgm" secondAttribute="trailing" id="xUd-7H-6AV"/>
                         </constraints>
@@ -120,8 +120,8 @@
             <objects>
                 <viewController storyboardIdentifier="DetailViewController" id="KYv-yf-Oes" customClass="DetailViewController" customModule="iOSProficiencyExercise" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kcG-eQ-bbd"/>
-                        <viewControllerLayoutGuide type="bottom" id="VQn-U2-QWx"/>
+                        <viewControllerLayoutGuide type="top" id="App-re-CXV"/>
+                        <viewControllerLayoutGuide type="bottom" id="YXc-wb-oMI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="m7z-P9-QXM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -216,7 +216,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="VQn-U2-QWx" firstAttribute="top" secondItem="cyi-Dp-xwH" secondAttribute="bottom" id="J4L-sq-Eh3"/>
+                            <constraint firstItem="YXc-wb-oMI" firstAttribute="top" secondItem="cyi-Dp-xwH" secondAttribute="bottom" id="J4L-sq-Eh3"/>
                             <constraint firstItem="cyi-Dp-xwH" firstAttribute="top" secondItem="m7z-P9-QXM" secondAttribute="top" id="k17-VS-Lq8"/>
                             <constraint firstItem="cyi-Dp-xwH" firstAttribute="leading" secondItem="m7z-P9-QXM" secondAttribute="leading" id="uCB-uN-TJr"/>
                             <constraint firstAttribute="trailing" secondItem="cyi-Dp-xwH" secondAttribute="trailing" id="xMz-Z5-aH7"/>
