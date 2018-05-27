@@ -12,6 +12,7 @@ class FeedsViewModel {
     
     weak var dataSource : GenericDataSource<ListModel>?
     var cellDidSelect: GenericDataSource<Int>?
+    var title: String?
     var selectedData: ListModel?
 
     
@@ -19,7 +20,7 @@ class FeedsViewModel {
         self.dataSource = dataSource
     }
     
-    func fetchCurrencies(_ completion: ((Result<Bool, ErrorResult>) -> Void)? = nil) {
+    func fetchServiceCall(_ completion: ((Result<Bool, ErrorResult>) -> Void)? = nil) {
         
         let service:FeedsService = FeedsService()
         service.fetchConverter { result in
@@ -29,6 +30,7 @@ class FeedsViewModel {
                 case .success(let converter) :
                     // reload data
                     self.dataSource?.data.value = converter.rows
+                    self.title = converter.title
                     completion?(Result.success(true))
                     
                     break

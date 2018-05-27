@@ -14,6 +14,7 @@ class FeedsViewController: UIViewController {
     fileprivate let itemsPerRow: CGFloat = 2
     
     @IBOutlet var collectionView: UICollectionView!
+    
     let dataSource = FeedsDataSource()
     lazy var viewModel : FeedsViewModel = {
         let viewModel = FeedsViewModel(dataSource: dataSource)
@@ -23,13 +24,24 @@ class FeedsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.title = ""
-        
         self.collectionView.dataSource = self.dataSource
         self.dataSource.data.addAndNotify(observer: self) { [weak self] in
             self?.collectionView.reloadData()
         }
-        self.viewModel.fetchCurrencies()
+        
+        DispatchQueue.main.async {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            self.viewModel.fetchServiceCall { result in
+                switch result {
+                case .success :
+                    self.title = self.viewModel.title
+                    break
+                case .failure :
+                    break
+                }
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
     }
     
     // MARK: - Navigation
@@ -90,6 +102,7 @@ extension FeedsViewController{
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate { loadImagesForOnscreenRows() }
     }
+    
 }
 
 
