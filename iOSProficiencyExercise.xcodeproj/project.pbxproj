@@ -41,6 +41,11 @@
 		AF8EC7BF20BA97E900FBD5F6 /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8EC7BE20BA97E900FBD5F6 /* RequestFactory.swift */; };
 		AF8EC7C120BA97FF00FBD5F6 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8EC7C020BA97FF00FBD5F6 /* ImageManager.swift */; };
 		AF8EC7C320BA98C500FBD5F6 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8EC7C220BA98C500FBD5F6 /* ImageHelper.swift */; };
+		AF8EC7C520BA9A7B00FBD5F6 /* FeedsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8EC7C420BA9A7B00FBD5F6 /* FeedsViewModelTests.swift */; };
+		AF8EC7C720BA9A9700FBD5F6 /* FeedsDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8EC7C620BA9A9700FBD5F6 /* FeedsDataSourceTests.swift */; };
+		AF8EC7C920BA9AB900FBD5F6 /* FeedsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8EC7C820BA9AB900FBD5F6 /* FeedsServiceTests.swift */; };
+		AF8EC7CB20BA9AD700FBD5F6 /* FeedsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8EC7CA20BA9AD700FBD5F6 /* FeedsViewControllerTests.swift */; };
+		AF8EC7CD20BA9AFD00FBD5F6 /* DetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8EC7CC20BA9AFD00FBD5F6 /* DetailViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +106,11 @@
 		AF8EC7BE20BA97E900FBD5F6 /* RequestFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
 		AF8EC7C020BA97FF00FBD5F6 /* ImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		AF8EC7C220BA98C500FBD5F6 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
+		AF8EC7C420BA9A7B00FBD5F6 /* FeedsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsViewModelTests.swift; sourceTree = "<group>"; };
+		AF8EC7C620BA9A9700FBD5F6 /* FeedsDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsDataSourceTests.swift; sourceTree = "<group>"; };
+		AF8EC7C820BA9AB900FBD5F6 /* FeedsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsServiceTests.swift; sourceTree = "<group>"; };
+		AF8EC7CA20BA9AD700FBD5F6 /* FeedsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsViewControllerTests.swift; sourceTree = "<group>"; };
+		AF8EC7CC20BA9AFD00FBD5F6 /* DetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +254,11 @@
 		AF83567820B636EE00DA035A /* iOSProficiencyExerciseTests */ = {
 			isa = PBXGroup;
 			children = (
+				AF8EC7C420BA9A7B00FBD5F6 /* FeedsViewModelTests.swift */,
+				AF8EC7C620BA9A9700FBD5F6 /* FeedsDataSourceTests.swift */,
+				AF8EC7C820BA9AB900FBD5F6 /* FeedsServiceTests.swift */,
+				AF8EC7CA20BA9AD700FBD5F6 /* FeedsViewControllerTests.swift */,
+				AF8EC7CC20BA9AFD00FBD5F6 /* DetailViewControllerTests.swift */,
 				AF83567920B636EE00DA035A /* iOSProficiencyExerciseTests.swift */,
 				AF83567B20B636EE00DA035A /* Info.plist */,
 			);
@@ -512,7 +527,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF8EC7C720BA9A9700FBD5F6 /* FeedsDataSourceTests.swift in Sources */,
+				AF8EC7C920BA9AB900FBD5F6 /* FeedsServiceTests.swift in Sources */,
+				AF8EC7C520BA9A7B00FBD5F6 /* FeedsViewModelTests.swift in Sources */,
 				AF83567A20B636EE00DA035A /* iOSProficiencyExerciseTests.swift in Sources */,
+				AF8EC7CB20BA9AD700FBD5F6 /* FeedsViewControllerTests.swift in Sources */,
+				AF8EC7CD20BA9AFD00FBD5F6 /* DetailViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

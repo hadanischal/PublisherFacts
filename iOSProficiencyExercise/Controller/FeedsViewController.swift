@@ -15,9 +15,10 @@ class FeedsViewController: UIViewController {
     
     @IBOutlet var collectionView: UICollectionView!
     
+    fileprivate var service : FeedsService! = FeedsService()
     let dataSource = FeedsDataSource()
     lazy var viewModel : FeedsViewModel = {
-        let viewModel = FeedsViewModel(dataSource: dataSource)
+        let viewModel = FeedsViewModel(service: service, dataSource: dataSource)
         return viewModel
     }()
     

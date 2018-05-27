@@ -14,15 +14,19 @@ class FeedsViewModel {
     var cellDidSelect: GenericDataSource<Int>?
     var title: String?
     var selectedData: ListModel?
-
+    weak var service: FeedsServiceProtocol?
     
-    init(dataSource : GenericDataSource<ListModel>?) {
+    init(service: FeedsServiceProtocol, dataSource : GenericDataSource<ListModel>?) {
         self.dataSource = dataSource
+        self.service = service
     }
     
     func fetchServiceCall(_ completion: ((Result<Bool, ErrorResult>) -> Void)? = nil) {
-        
-        let service:FeedsService = FeedsService()
+                
+        guard let service = service else {
+            completion?(Result.failure(ErrorResult.custom(string: "Missing service")))
+            return
+        }
         service.fetchConverter { result in
             // print(result)
             DispatchQueue.main.async {
