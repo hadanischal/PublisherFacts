@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import iOSProficiencyExercise
 
 class DetailViewControllerTests: XCTestCase {
     

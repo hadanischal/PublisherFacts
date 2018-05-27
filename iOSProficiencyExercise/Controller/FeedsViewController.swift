@@ -58,7 +58,18 @@ class FeedsViewController: UIViewController {
 
 
 // MARK: UICollectionViewDelegateFlowLayout
+
 extension FeedsViewController : UICollectionViewDelegateFlowLayout {
+    
+    func CollectionViewSetUp() -> Void{
+        let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.scrollDirection = UICollectionViewScrollDirection.vertical
+        self.collectionView.collectionViewLayout = layout
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0 //0.0
+        self.collectionView.backgroundColor = ThemeColor.collectionViewBackgroundColor
+        self.collectionView.showsHorizontalScrollIndicator = false
+    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.viewModel.didSelectItemAt(indexPath: indexPath)
