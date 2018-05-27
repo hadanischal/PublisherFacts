@@ -29,7 +29,6 @@
 		AF83568520B636EE00DA035A /* iOSProficiencyExerciseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83568420B636EE00DA035A /* iOSProficiencyExerciseUITests.swift */; };
 		AF83569920B6375B00DA035A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83569720B6375B00DA035A /* AppDelegate.swift */; };
 		AF83569D20B637AA00DA035A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF83569C20B637AA00DA035A /* Assets.xcassets */; };
-		AF83569F20B6386300DA035A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83569E20B6386300DA035A /* ViewController.swift */; };
 		AF8EC76720BA547900FBD5F6 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8EC76620BA547900FBD5F6 /* FeedsViewController.swift */; };
 		AF8EC79020BA626800FBD5F6 /* FeedsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8EC78F20BA626800FBD5F6 /* FeedsModel.swift */; };
 		AF8EC79220BA634400FBD5F6 /* DynamicValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8EC79120BA634400FBD5F6 /* DynamicValue.swift */; };
@@ -44,7 +43,6 @@
 		AF8EC7AD20BA668800FBD5F6 /* FeedsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8EC7AC20BA668800FBD5F6 /* FeedsService.swift */; };
 		AF8EC7AF20BA674B00FBD5F6 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8EC7AE20BA674B00FBD5F6 /* Reachability.swift */; };
 		AF8EC7BA20BA866200FBD5F6 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8EC7B620BA866100FBD5F6 /* ImageManager.swift */; };
-		AF8EC7BB20BA866200FBD5F6 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8EC7B720BA866100FBD5F6 /* NetworkManager.swift */; };
 		AF8EC7BC20BA866200FBD5F6 /* AppTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8EC7B820BA866100FBD5F6 /* AppTarget.swift */; };
 		AF8EC7BD20BA866200FBD5F6 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8EC7B920BA866100FBD5F6 /* JSONParser.swift */; };
 /* End PBXBuildFile section */
@@ -95,7 +93,6 @@
 		AF83568620B636EE00DA035A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF83569720B6375B00DA035A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF83569C20B637AA00DA035A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AF83569E20B6386300DA035A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AF8EC76620BA547900FBD5F6 /* FeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
 		AF8EC78F20BA626800FBD5F6 /* FeedsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsModel.swift; sourceTree = "<group>"; };
 		AF8EC79120BA634400FBD5F6 /* DynamicValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicValue.swift; sourceTree = "<group>"; };
@@ -110,7 +107,6 @@
 		AF8EC7AC20BA668800FBD5F6 /* FeedsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsService.swift; sourceTree = "<group>"; };
 		AF8EC7AE20BA674B00FBD5F6 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		AF8EC7B620BA866100FBD5F6 /* ImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
-		AF8EC7B720BA866100FBD5F6 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		AF8EC7B820BA866100FBD5F6 /* AppTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTarget.swift; sourceTree = "<group>"; };
 		AF8EC7B920BA866100FBD5F6 /* JSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -276,7 +272,6 @@
 		AF83569320B6375B00DA035A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				AF83569E20B6386300DA035A /* ViewController.swift */,
 				AF8EC76620BA547900FBD5F6 /* FeedsViewController.swift */,
 				AF19CF8C20B7E66F004B9BC8 /* DetailViewController.swift */,
 			);
@@ -361,7 +356,6 @@
 			isa = PBXGroup;
 			children = (
 				AF8EC7B620BA866100FBD5F6 /* ImageManager.swift */,
-				AF8EC7B720BA866100FBD5F6 /* NetworkManager.swift */,
 				AF8EC7B820BA866100FBD5F6 /* AppTarget.swift */,
 				AF8EC7B920BA866100FBD5F6 /* JSONParser.swift */,
 			);
@@ -513,14 +507,12 @@
 				AF17DE8520B79F07006AB7E5 /* UIImageView.swift in Sources */,
 				AF147E7420B6F1BE00B91F2E /* UIColor.swift in Sources */,
 				AF8EC7A120BA65CC00FBD5F6 /* Result.swift in Sources */,
-				AF83569F20B6386300DA035A /* ViewController.swift in Sources */,
 				AF8EC7BA20BA866200FBD5F6 /* ImageManager.swift in Sources */,
 				AF8EC7BC20BA866200FBD5F6 /* AppTarget.swift in Sources */,
 				AF83569920B6375B00DA035A /* AppDelegate.swift in Sources */,
 				AF8EC79920BA63C900FBD5F6 /* FeedsDataSource.swift in Sources */,
 				AF8EC76720BA547900FBD5F6 /* FeedsViewController.swift in Sources */,
 				AF8EC7BD20BA866200FBD5F6 /* JSONParser.swift in Sources */,
-				AF8EC7BB20BA866200FBD5F6 /* NetworkManager.swift in Sources */,
 				AF17DE8820B7ACC5006AB7E5 /* CustomLayout.swift in Sources */,
 				AF8EC79B20BA63DC00FBD5F6 /* FeedsViewModel.swift in Sources */,
 				AF8EC7A720BA660F00FBD5F6 /* RequestHandler.swift in Sources */,
