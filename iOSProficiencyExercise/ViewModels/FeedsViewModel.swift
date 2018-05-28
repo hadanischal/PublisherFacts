@@ -9,7 +9,6 @@
 import Foundation
 
 class FeedsViewModel {
-    
     weak var dataSource : GenericDataSource<ListModel>?
     var cellDidSelect: GenericDataSource<Int>?
     var title: String?
@@ -28,20 +27,16 @@ class FeedsViewModel {
             return
         }
         service.fetchConverter { result in
-            // print(result)
             DispatchQueue.main.async {
                 switch result {
                 case .success(let converter) :
-                    // reload data
                     self.dataSource?.data.value = converter.rows
                     self.title = converter.title
                     completion?(Result.success(true))
-                    
                     break
                 case .failure(let error) :
                     print("Parser error \(error)")
                     completion?(Result.failure(error))
-                    
                     break
                 }
             }

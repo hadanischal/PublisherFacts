@@ -37,11 +37,9 @@ final class ParserHelper {
                 completion(.success(finalResult))
                 
             } else {
-                // not an array
                 completion(.failure(.parser(string: "Json data is not an array")))
             }
         } catch {
-            // can't parse json
             completion(.failure(.parser(string: "Error while parsing json data")))
         }
     }
@@ -79,9 +77,6 @@ final class ParserHelper {
         }else{
             completion(.failure(.parser(string: "Error while parsing json data")))
         }
-        
-        
-        
     }
 }
 

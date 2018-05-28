@@ -18,7 +18,6 @@ class CollectionViewCell: UICollectionViewCell {
             guard let feeds = feedsValue else {
                 return
             }
-            print(feeds)
             titleLabel?.text = feeds.title
         }
     }

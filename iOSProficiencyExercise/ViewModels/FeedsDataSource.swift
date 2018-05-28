@@ -30,7 +30,5 @@ class FeedsDataSource : GenericDataSource<ListModel>, UICollectionViewDataSource
         ImageHelper().updateImageForCollectionViewCell(cell, inCollectionView: collectionView, imageURL: feedsValue.imageRef, atIndexPath: indexPath)
         return cell
     }
-    
-   
 }
 
