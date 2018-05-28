@@ -10,23 +10,24 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var bagroundView: UIView!
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var rowImage: UIImageView!
+    @IBOutlet var titleLabel: UILabel?
+    @IBOutlet var rowImage: UIImageView?
     
     var feedsValue : ListModel? {
         didSet {
             guard let feeds = feedsValue else {
                 return
             }
-            titleLabel.text = feeds.title
+            print(feeds)
+            titleLabel?.text = feeds.title
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.bagroundView.backgroundColor = ThemeColor.contentViewBackgroundColor
-        self.rowImage.contentMode =   UIViewContentMode.scaleAspectFill
-        self.rowImage .clipsToBounds =  true
+        self.rowImage?.contentMode =   UIViewContentMode.scaleAspectFill
+        self.rowImage? .clipsToBounds =  true
     }
     
 

@@ -22,24 +22,24 @@ class ImageHelper:imageSession{
     var imageManager: ImageManager { return ImageManager() }
     
     func updateImageForCollectionViewCell(_ cell: UICollectionViewCell, inCollectionView collectionView: UICollectionView, imageURL: String, atIndexPath indexPath: IndexPath) {
-        let imageView = cell.viewWithTag(kLazyLoadCellImageViewTag) as! UIImageView
-        imageView.image = kLazyLoadPlaceholderImage
+        let imageView = cell.viewWithTag(kLazyLoadCellImageViewTag) as? UIImageView
+        imageView?.image = kLazyLoadPlaceholderImage
         imageManager.downloadImageFromURL(imageURL) { (success, image) -> Void in
             if success && image != nil {
                 if (collectionView.indexPath(for: cell) as NSIndexPath?)?.row == (indexPath as NSIndexPath).row {
-                    imageView.image = image
+                    imageView?.image = image
                 }
             }
         }
     }
     
     func updateImageForTableViewCell(_ cell: UITableViewCell, inTableView tableView: UITableView, imageURL: String, atIndexPath indexPath: IndexPath) {
-        let imageView = cell.viewWithTag(kLazyLoadCellImageViewTag) as! UIImageView
-        imageView.image = kLazyLoadPlaceholderImage
+        let imageView = cell.viewWithTag(kLazyLoadCellImageViewTag) as? UIImageView
+        imageView?.image = kLazyLoadPlaceholderImage
         imageManager.downloadImageFromURL(imageURL) { (success, image) -> Void in
             if success && image != nil {
                 if (tableView.indexPath(for: cell) as NSIndexPath?)?.row == (indexPath as NSIndexPath).row {
-                    imageView.image = image
+                    imageView?.image = image
                 }
             }
         }

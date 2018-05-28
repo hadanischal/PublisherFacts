@@ -13,6 +13,7 @@ class FeedsViewController: UIViewController {
     fileprivate let sectionInsets = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
     fileprivate let itemsPerRow: CGFloat = 2
     
+    private let refreshControl = UIRefreshControl()
     @IBOutlet var collectionView: UICollectionView!
     
     fileprivate var service : FeedsService! = FeedsService()
@@ -29,6 +30,27 @@ class FeedsViewController: UIViewController {
         self.dataSource.data.addAndNotify(observer: self) { [weak self] in
             self?.collectionView.reloadData()
         }
+        self.setupUIRefreshControl()
+        self.serviceCall()
+
+    }
+    
+        // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == segueIdentifier {
+            if let controller = segue.destination as? DetailViewController {
+                let data = viewModel.selectedData
+                controller.data = data
+            }
+        }
+    }
+    
+    func setupUIRefreshControl(){
+        refreshControl.addTarget(self, action: #selector(serviceCall), for: UIControlEvents.valueChanged)
+        self.collectionView.addSubview(refreshControl)
+
+    }
+    @objc func serviceCall() {
         DispatchQueue.main.async {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
             self.viewModel.fetchServiceCall { result in
@@ -42,16 +64,7 @@ class FeedsViewController: UIViewController {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
         }
-    }
-    
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == segueIdentifier {
-            if let controller = segue.destination as? DetailViewController {
-                let data = viewModel.selectedData
-                controller.data = data
-            }
-        }
+        refreshControl.endRefreshing()
     }
 }
 
