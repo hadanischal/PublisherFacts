@@ -31,10 +31,6 @@ class FeedsDataSource : GenericDataSource<ListModel>, UICollectionViewDataSource
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //self.performSegue(withIdentifier:"toDetailViewController", sender: indexPath)
-    }
-    
-
+   
 }
 

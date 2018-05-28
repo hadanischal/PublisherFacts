@@ -24,12 +24,11 @@ class FeedsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.CollectionViewSetUp()
         self.collectionView.dataSource = self.dataSource
         self.dataSource.data.addAndNotify(observer: self) { [weak self] in
             self?.collectionView.reloadData()
         }
-        
         DispatchQueue.main.async {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
             self.viewModel.fetchServiceCall { result in
