@@ -12,11 +12,7 @@ protocol Utility{
     func filterNil(_ value : AnyObject?) -> AnyObject?
 }
 
-class Util {
-    
-}
-
-extension Util: Utility {
+class Util : Utility {
     func filterNil(_ value : AnyObject?) -> AnyObject? {
         if value is NSNull || value == nil {
             return "" as AnyObject
@@ -25,9 +21,3 @@ extension Util: Utility {
         }
     }
 }
-
-//    object.feature = nullToNil(dict["feature"])
-
-
-
-
