@@ -28,6 +28,4 @@ class CollectionViewCell: UICollectionViewCell {
         self.rowImage?.contentMode =   UIViewContentMode.scaleAspectFill
         self.rowImage? .clipsToBounds =  true
     }
-    
-
 }

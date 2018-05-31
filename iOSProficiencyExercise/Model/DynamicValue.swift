@@ -10,7 +10,6 @@ import Foundation
 
 typealias CompletionHandler = (() -> Void)
 class DynamicValue<T> {
-    
     var value : T {
         didSet {
             self.notify()
@@ -18,7 +17,6 @@ class DynamicValue<T> {
     }
     
     private var observers = [String: CompletionHandler]()
-    
     init(_ value: T) {
         self.value = value
     }

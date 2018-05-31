@@ -13,13 +13,12 @@ protocol ViewManagers{
     func rootView() -> UIViewController
 }
 
-class RootViewManager {}
+class RootViewManager { }
 
 extension RootViewManager: ViewManagers {
     func rootView() -> UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        //        let controller: ViewController = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-        let controller: FeedsViewController = storyboard.instantiateViewController(withIdentifier: "FeedsViewController") as! FeedsViewController
+         let controller: FeedsViewController = storyboard.instantiateViewController(withIdentifier: "FeedsViewController") as! FeedsViewController
         let navigationController = UINavigationController(rootViewController: controller)
         return navigationController
         

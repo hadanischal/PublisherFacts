@@ -283,8 +283,8 @@
 		AF83569320B6375B00DA035A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				AF8EC76620BA547900FBD5F6 /* FeedsViewController.swift */,
 				AF19CF8C20B7E66F004B9BC8 /* DetailViewController.swift */,
+				AF8EC76620BA547900FBD5F6 /* FeedsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

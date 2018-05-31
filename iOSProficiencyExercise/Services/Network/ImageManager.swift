@@ -8,16 +8,13 @@
 
 import UIKit
 
-protocol ImageManaging{
+protocol ImageManaging: class {
     func downloadImageFromURL(_ urlString: String, completion: ((_ success: Bool, _ image: UIImage?) -> Void)?)
-
 }
 
 class ImageManager: NSObject {
     var imageCache = [String: UIImage]()
     private let kLazyLoadMaxCacheImageSize = 20
-
- 
     func cacheImage(_ image: UIImage, forURL url: String) {
         if imageCache.count > kLazyLoadMaxCacheImageSize { // free old images first.
             imageCache.remove(at: imageCache.startIndex)
@@ -25,9 +22,8 @@ class ImageManager: NSObject {
         imageCache[url] = image
     }
     
- 
     func cachedImageForURL(_ url: String) -> UIImage? { return imageCache[url] }
-     func clearCache() { imageCache.removeAll() }
+    func clearCache() { imageCache.removeAll() }
     
     func downloadImageFromURL(_ urlString: String, completion: ((_ success: Bool, _ image: UIImage?) -> Void)?) {
         // do we have this cached?

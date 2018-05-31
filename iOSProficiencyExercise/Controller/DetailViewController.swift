@@ -9,22 +9,27 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    @IBOutlet weak var tableView: UITableView!
     fileprivate let portraitReuseIdentifier = "PortraitTableViewCell"
     fileprivate let landscapeReuseIdentifier = "LandscapeTableViewCell"
     var currentDeviceOrientation: UIDeviceOrientation = .unknown
     fileprivate let imageHelper = ImageHelper()
     var data: ListModel!
-    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    func setupUI() {
+        self.navigationItem.title = data.title
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        self.tableView.backgroundColor = ThemeColor.white
+        self.view.backgroundColor = ThemeColor.white
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UIDevice.current.beginGeneratingDeviceOrientationNotifications()
@@ -46,23 +51,9 @@ class DetailViewController: UIViewController {
     }
 }
 
-// MARK:
-// MARK: Setup UI
-
-extension DetailViewController {
-    func setupUI() {
-        self.navigationItem.title = data.title
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        self.tableView.backgroundColor = ThemeColor.white
-        self.view.backgroundColor = ThemeColor.white
-        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
-    }
-}
 // MARK: - UITableViewDataSource
 
 extension DetailViewController:UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -83,12 +74,12 @@ extension DetailViewController:UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {}
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("tapped")
+    }
 }
 
 // MARK: - TableViewDelegate Setup
-
 extension DetailViewController : UITableViewDelegate{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -104,9 +95,8 @@ extension DetailViewController : UITableViewDelegate{
     
 }
 
-
+// MARK: - UIScrollViewDelegate
 extension DetailViewController {
-    
     func loadImagesForOnscreenRows() {
         let visiblePaths = tableView.indexPathsForVisibleRows ?? [IndexPath]()
         for indexPath in visiblePaths {

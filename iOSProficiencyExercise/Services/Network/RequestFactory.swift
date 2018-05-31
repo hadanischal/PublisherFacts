@@ -9,13 +9,8 @@
 import Foundation
 
 final class RequestFactory {
-    
     enum Method: String {
-        case GET
-        case POST
-        case PUT
-        case DELETE
-        case PATCH
+        case GET,POST,PUT,DELETE,PATCH
     }
     
     static func request(method: Method, url: URL) -> URLRequest {

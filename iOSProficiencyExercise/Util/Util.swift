@@ -9,25 +9,15 @@
 import Foundation
 
 protocol Utility{
-    func filterNil(_ value : AnyObject?) -> AnyObject?
+    func filterNil(_ value: AnyObject?) -> AnyObject?
 }
 
-class Util {
+struct Util {
     
 }
 
-extension Util: Utility {
-    func filterNil(_ value : AnyObject?) -> AnyObject? {
-        if value is NSNull || value == nil {
-            return "" as AnyObject
-        } else {
-            return value
-        }
+extension Util: Utility{
+    func filterNil(_ value: AnyObject?) -> AnyObject? {
+        return ((value is NSNull || value == nil) ?  "" as AnyObject :  value)
     }
 }
-
-//    object.feature = nullToNil(dict["feature"])
-
-
-
-

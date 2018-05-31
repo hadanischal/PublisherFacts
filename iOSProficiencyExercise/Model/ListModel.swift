@@ -14,7 +14,7 @@ struct ListModel {
     let title: String!
     let description: String!
     let imageRef: String!
-    
+
     init(dictionary: [String: Any]) {
         self.title = util.filterNil(dictionary["title"] as AnyObject) as! String
         self.description = util.filterNil(dictionary["description"] as AnyObject) as! String

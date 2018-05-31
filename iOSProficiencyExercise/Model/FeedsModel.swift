@@ -9,12 +9,11 @@
 import Foundation
 
 struct FeedsModel {
-    let title : String
-    let rows : [ListModel]
+    let title: String
+    let rows: [ListModel]
 }
 
 extension FeedsModel : Parceable {
-    
     static func parseObject(dictionary: [String : AnyObject]) -> Result<FeedsModel, ErrorResult> {
         if let base = dictionary["title"] as? String,
             let rows = dictionary["rows"] as? [AnyObject] {

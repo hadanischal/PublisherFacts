@@ -8,12 +8,11 @@
 
 import Foundation
 
-protocol FeedsServiceProtocol : class {
+protocol FeedsServiceProtocol: class {
     func fetchConverter(_ completion: @escaping ((Result<FeedsModel, ErrorResult>) -> Void))
 }
 
-final class FeedsService : RequestHandler, FeedsServiceProtocol {
-
+final class FeedsService: RequestHandler, FeedsServiceProtocol {
     let endpoint = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
     var task : URLSessionTask?
     

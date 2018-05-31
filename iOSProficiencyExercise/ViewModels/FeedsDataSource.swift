@@ -9,12 +9,11 @@
 import Foundation
 import UIKit
 
-class GenericDataSource<T> : NSObject {
+class GenericDataSource<T>: NSObject {
     var data: DynamicValue<[T]> = DynamicValue([])
 }
 
-class FeedsDataSource : GenericDataSource<ListModel>, UICollectionViewDataSource {
-    
+class FeedsDataSource: GenericDataSource<ListModel>, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }

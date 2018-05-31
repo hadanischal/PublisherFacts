@@ -13,11 +13,8 @@ protocol Parceable {
 }
 
 final class ParserHelper {
-    
     static func parse<T: Parceable>(data: Data, completion : (Result<[T], ErrorResult>) -> Void) {
-        
         do {
-            
             if let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [AnyObject] {
                 // init final result
                 var finalResult : [T] = []
@@ -33,9 +30,7 @@ final class ParserHelper {
                         }
                     }
                 }
-                
                 completion(.success(finalResult))
-                
             } else {
                 completion(.failure(.parser(string: "Json data is not an array")))
             }
@@ -61,7 +56,6 @@ final class ParserHelper {
                             completion(.success(newModel))
                             break
                         }
-                        
                     } else {
                         // not an array
                         completion(.failure(.parser(string: "Json data is not an array")))
@@ -70,7 +64,6 @@ final class ParserHelper {
                     // can't parse json
                     completion(.failure(.parser(string: "Error while parsing json data")))
                 }
-                
             }else{
                 completion(.failure(.parser(string: "Error while parsing json data")))
             }

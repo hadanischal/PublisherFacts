@@ -9,7 +9,6 @@
 import Foundation
 
 extension String {
-    
     func filterNil(_ value : AnyObject?) -> AnyObject? {
         if value is NSNull || value == nil  {
             return "" as AnyObject
@@ -21,5 +20,4 @@ extension String {
     var isNullOrEmpty: Bool {
         return self.isEmpty
     }
-
 }

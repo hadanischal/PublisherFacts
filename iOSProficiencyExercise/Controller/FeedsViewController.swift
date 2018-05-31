@@ -9,13 +9,11 @@
 import UIKit
 
 class FeedsViewController: UIViewController {
+    @IBOutlet var collectionView: UICollectionView!
     let segueIdentifier = "toDetailViewController"
     fileprivate let sectionInsets = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
     fileprivate let itemsPerRow: CGFloat = 2
-    
     private let refreshControl = UIRefreshControl()
-    @IBOutlet var collectionView: UICollectionView!
-    
     fileprivate var service : FeedsService! = FeedsService()
     let dataSource = FeedsDataSource()
     lazy var viewModel : FeedsViewModel = {
@@ -25,7 +23,7 @@ class FeedsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.CollectionViewSetUp()
+        self.setupCollectionView()
         self.collectionView.dataSource = self.dataSource
         self.dataSource.data.addAndNotify(observer: self) { [weak self] in
             self?.collectionView.reloadData()
@@ -33,16 +31,6 @@ class FeedsViewController: UIViewController {
         self.setupUIRefreshControl()
         self.serviceCall()
 
-    }
-    
-        // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == segueIdentifier {
-            if let controller = segue.destination as? DetailViewController {
-                let data = viewModel.selectedData
-                controller.data = data
-            }
-        }
     }
     
     func setupUIRefreshControl(){
@@ -66,14 +54,21 @@ class FeedsViewController: UIViewController {
         }
         refreshControl.endRefreshing()
     }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == segueIdentifier {
+            if let controller = segue.destination as? DetailViewController {
+                let data = viewModel.selectedData
+                controller.data = data
+            }
+        }
+    }
 }
 
-
 // MARK: UICollectionViewDelegateFlowLayout
-
 extension FeedsViewController : UICollectionViewDelegateFlowLayout {
-    
-    func CollectionViewSetUp() -> Void{
+    func setupCollectionView() -> Void{
         let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.scrollDirection = UICollectionViewScrollDirection.vertical
         self.collectionView.collectionViewLayout = layout
@@ -93,7 +88,6 @@ extension FeedsViewController : UICollectionViewDelegateFlowLayout {
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
         let heightPerItem = widthPerItem + 21
-        
         return CGSize(width: widthPerItem, height: heightPerItem)
     }
     
@@ -106,14 +100,11 @@ extension FeedsViewController : UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat{
-        
         return 0
     }
-    
 }
-
+//MARK: UISCROLLVIEW DELEGATE
 extension FeedsViewController{
-    
     // MARK: - Lazy Loading of cells
     func loadImagesForOnscreenRows() {
         self.collectionView.reloadData()
@@ -126,7 +117,6 @@ extension FeedsViewController{
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate { loadImagesForOnscreenRows() }
     }
-    
 }
 
 
