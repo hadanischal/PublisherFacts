@@ -18,7 +18,6 @@ final class FeedsService : RequestHandler, FeedsServiceProtocol {
     var task : URLSessionTask?
     
     func fetchConverter(_ completion: @escaping ((Result<FeedsModel, ErrorResult>) -> Void)) {
-        // cancel previous request if already in progress
         self.cancelFetchCurrencies()
         task = RequestService().loadData(urlString: endpoint, completion: self.networkResult(completion: completion))
     }
