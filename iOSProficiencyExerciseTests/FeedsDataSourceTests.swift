@@ -10,7 +10,7 @@ import XCTest
 @testable import iOSProficiencyExercise
 
 class FeedsDataSourceTests: XCTestCase {
-    var dataSource : FeedsDataSource!
+    var dataSource: FeedsDataSource!
     
     override func setUp() {
         super.setUp()
@@ -23,7 +23,7 @@ class FeedsDataSourceTests: XCTestCase {
     }
     
     func testEmptyValueInDataSource() {
-        dataSource.data.value = []  // giving empty data value
+        dataSource.data.value = []
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 100, height: 100), collectionViewLayout: layout)
         collectionView.dataSource = dataSource

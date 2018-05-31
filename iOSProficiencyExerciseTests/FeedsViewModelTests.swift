@@ -21,9 +21,9 @@ class FeedsViewModelTests: XCTestCase {
         }
     }
 
-    var viewModel : FeedsViewModel!
-    var dataSource : GenericDataSource<ListModel>!
-    fileprivate var service : MockFeedsService!
+    var viewModel: FeedsViewModel!
+    var dataSource: GenericDataSource<ListModel>!
+    fileprivate var service: MockFeedsService!
 
     override func setUp() {
         super.setUp()

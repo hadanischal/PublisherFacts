@@ -10,7 +10,6 @@ import XCTest
 @testable import iOSProficiencyExercise
 
 class FeedsServiceTests: XCTestCase {
-    
     func testCancelRequest() {
         let service : FeedsService! = FeedsService()
         service.fetchConverter{ (_) in
