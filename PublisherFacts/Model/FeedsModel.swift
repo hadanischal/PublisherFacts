@@ -13,13 +13,13 @@ struct FeedsModel {
     let rows: [ListModel]
 }
 
-extension FeedsModel : Parceable {
-    static func parseObject(dictionary: [String : AnyObject]) -> Result<FeedsModel, ErrorResult> {
+extension FeedsModel: Parceable {
+    static func parseObject(dictionary: [String: AnyObject]) -> Result<FeedsModel, ErrorResult> {
         if let base = dictionary["title"] as? String,
             let rows = dictionary["rows"] as? [AnyObject] {
             var responseResults = [ListModel]()
             for properties in rows {
-                let currentData = ListModel(dictionary: properties as! [String:Any])
+                let currentData = ListModel(dictionary: properties as! [String: Any])
                 responseResults.append(currentData)
             }
             let conversion = FeedsModel(title: base, rows: responseResults)
@@ -29,4 +29,3 @@ extension FeedsModel : Parceable {
         }
     }
 }
-

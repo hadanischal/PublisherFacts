@@ -9,14 +9,14 @@
 import Foundation
 
 extension String {
-    func filterNil(_ value : AnyObject?) -> AnyObject? {
-        if value is NSNull || value == nil  {
+    func filterNil(_ value: AnyObject?) -> AnyObject? {
+        if value is NSNull || value == nil {
             return "" as AnyObject
         } else {
             return value
         }
     }
-    
+
     var isNullOrEmpty: Bool {
         return self.isEmpty
     }

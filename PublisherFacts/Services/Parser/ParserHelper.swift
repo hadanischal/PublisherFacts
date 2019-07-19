@@ -13,16 +13,16 @@ protocol Parceable {
 }
 
 final class ParserHelper {
-    static func parse<T: Parceable>(data: Data, completion : (Result<[T], ErrorResult>) -> Void) {
+    static func parse<T: Parceable>(data: Data, completion: (Result<[T], ErrorResult>) -> Void) {
         do {
             if let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [AnyObject] {
                 // init final result
-                var finalResult : [T] = []
+                var finalResult: [T] = []
                 for object in result {
-                    if let dictionary = object as? [String : AnyObject] {
+                    if let dictionary = object as? [String: AnyObject] {
                         // check foreach dictionary if parseable
                         switch T.parseObject(dictionary: dictionary) {
-                        case .failure(_):
+                        case .failure:
                             continue
                         case .success(let newModel):
                             finalResult.append(newModel)
@@ -38,9 +38,9 @@ final class ParserHelper {
             completion(.failure(.parser(string: "Error while parsing json data")))
         }
     }
-    
-    static func parse<T: Parceable>(data: Data, completion : (Result<T, ErrorResult>) -> Void) {
-        
+
+    static func parse<T: Parceable>(data: Data, completion: (Result<T, ErrorResult>) -> Void) {
+
         if let value = String(data: data, encoding: String.Encoding.ascii) {
             if let jsonData = value.data(using: String.Encoding.utf8) {
                 do {
@@ -64,12 +64,11 @@ final class ParserHelper {
                     // can't parse json
                     completion(.failure(.parser(string: "Error while parsing json data")))
                 }
-            }else{
+            } else {
                 completion(.failure(.parser(string: "Error while parsing json data")))
             }
-        }else{
+        } else {
             completion(.failure(.parser(string: "Error while parsing json data")))
         }
     }
 }
-

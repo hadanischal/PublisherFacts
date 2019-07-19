@@ -12,8 +12,8 @@ class CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var bagroundView: UIView!
     @IBOutlet var titleLabel: UILabel?
     @IBOutlet var rowImage: UIImageView?
-    
-    var feedsValue : ListModel? {
+
+    var feedsValue: ListModel? {
         didSet {
             guard let feeds = feedsValue else {
                 return
@@ -21,7 +21,7 @@ class CollectionViewCell: UICollectionViewCell {
             titleLabel?.text = feeds.title
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.bagroundView.backgroundColor = ThemeColor.contentViewBackgroundColor

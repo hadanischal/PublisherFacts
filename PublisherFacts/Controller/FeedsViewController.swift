@@ -14,13 +14,13 @@ class FeedsViewController: UIViewController {
     fileprivate let sectionInsets = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
     fileprivate let itemsPerRow: CGFloat = 2
     private let refreshControl = UIRefreshControl()
-    fileprivate var service : FeedsService! = FeedsService()
+    fileprivate var service: FeedsService! = FeedsService()
     let dataSource = FeedsDataSource()
-    lazy var viewModel : FeedsViewModel = {
+    lazy var viewModel: FeedsViewModel = {
         let viewModel = FeedsViewModel(service: service, dataSource: dataSource)
         return viewModel
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupCollectionView()
@@ -32,8 +32,8 @@ class FeedsViewController: UIViewController {
         self.serviceCall()
 
     }
-    
-    func setupUIRefreshControl(){
+
+    func setupUIRefreshControl() {
         refreshControl.addTarget(self, action: #selector(serviceCall), for: UIControl.Event.valueChanged)
         self.collectionView.addSubview(refreshControl)
 
@@ -54,7 +54,7 @@ class FeedsViewController: UIViewController {
         }
         refreshControl.endRefreshing()
     }
-    
+
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == segueIdentifier {
@@ -67,8 +67,8 @@ class FeedsViewController: UIViewController {
 }
 
 // MARK: UICollectionViewDelegateFlowLayout
-extension FeedsViewController : UICollectionViewDelegateFlowLayout {
-    func setupCollectionView() -> Void{
+extension FeedsViewController: UICollectionViewDelegateFlowLayout {
+    func setupCollectionView() {
         let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.scrollDirection = UICollectionView.ScrollDirection.vertical
         self.collectionView.collectionViewLayout = layout
@@ -77,47 +77,44 @@ extension FeedsViewController : UICollectionViewDelegateFlowLayout {
         self.collectionView.backgroundColor = ThemeColor.collectionViewBackgroundColor
         self.collectionView.showsHorizontalScrollIndicator = false
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.viewModel.didSelectItemAt(indexPath: indexPath)
         self.performSegue(withIdentifier: segueIdentifier, sender: indexPath)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
         let heightPerItem = widthPerItem + 21
         return CGSize(width: widthPerItem, height: heightPerItem)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets{
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return sectionInsets
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat{
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat{
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
 }
-//MARK: UISCROLLVIEW DELEGATE
-extension FeedsViewController{
+// MARK: UISCROLLVIEW DELEGATE
+extension FeedsViewController {
     // MARK: - Lazy Loading of cells
     func loadImagesForOnscreenRows() {
         self.collectionView.reloadData()
     }
-    
+
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         loadImagesForOnscreenRows()
     }
-    
+
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate { loadImagesForOnscreenRows() }
     }
 }
-
-
-

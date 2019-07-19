@@ -21,5 +21,3 @@ struct ListModel {
         self.imageRef = util.filterNil(dictionary["imageHref"] as AnyObject) as! String
     }
 }
-
-

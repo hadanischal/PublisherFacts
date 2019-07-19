@@ -26,7 +26,7 @@ class RequestHandler {
                 })
             }
     }
-    
+
     func networkResult<T: Parceable>(completion: @escaping ((Result<T, ErrorResult>) -> Void)) ->
         ((Result<Data, ErrorResult>) -> Void) {
             return { dataResult in

@@ -11,7 +11,7 @@ import UIKit
 class LandscapeTableViewCell: UITableViewCell {
     @IBOutlet var thumbnailImage: UIImageView!
     @IBOutlet var descriptionLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.thumbnailImage.contentMode =   UIView.ContentMode.scaleAspectFill

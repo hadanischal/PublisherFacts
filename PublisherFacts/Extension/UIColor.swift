@@ -8,8 +8,8 @@
 
 import UIKit
 
-extension UIColor{
-    convenience init(red: Int, green: Int, blue: Int){
+extension UIColor {
+    convenience init(red: Int, green: Int, blue: Int) {
         let newRed = CGFloat(red)/255
         let newGreen = CGFloat(green)/255
         let newBlue = CGFloat(blue)/255
@@ -28,7 +28,7 @@ extension UIColor {
     }
 }
 
-// MARK :- convert a hex color to a UIColor
+// MARK: - convert a hex color to a UIColor
 extension UIColor {
     public convenience init?(hexString: String) {
         let r, g, b, a: CGFloat
@@ -51,5 +51,3 @@ extension UIColor {
         return nil
     }
 }
-
-
