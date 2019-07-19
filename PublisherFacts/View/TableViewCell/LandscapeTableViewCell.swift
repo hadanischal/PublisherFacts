@@ -1,5 +1,5 @@
 //
-//  PortraitTableViewCell.swift
+//  LandscapeTableViewCell.swift
 //  iOSProficiencyExercise
 //
 //  Created by Nischal Hada on 5/25/18.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class PortraitTableViewCell: UITableViewCell {
-    @IBOutlet var bannerImage: UIImageView!
+class LandscapeTableViewCell: UITableViewCell {
+    @IBOutlet var thumbnailImage: UIImageView!
     @IBOutlet var descriptionLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.bannerImage.contentMode =   UIViewContentMode.scaleAspectFill
-        self.bannerImage .clipsToBounds =  true
+        self.thumbnailImage.contentMode =   UIView.ContentMode.scaleAspectFill
+        self.thumbnailImage .clipsToBounds =  true
     }
 }
