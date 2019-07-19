@@ -1,6 +1,6 @@
 //
 //  FeedsDataSource.swift
-//  iOSProficiencyExercise
+//  PublisherFacts
 //
 //  Created by Nischal Hada on 5/27/18.
 //  Copyright © 2018 NischalHada. All rights reserved.
@@ -26,7 +26,10 @@ class FeedsDataSource: GenericDataSource<ListModel>, UICollectionViewDataSource 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! CollectionViewCell
         let feedsValue = self.data.value[indexPath.row]
         cell.feedsValue = feedsValue
-        ImageHelper().updateImageForCollectionViewCell(cell, inCollectionView: collectionView, imageURL: feedsValue.imageRef, atIndexPath: indexPath)
+        guard let imageUrl = feedsValue.imageHref else {
+            return cell
+        }
+        ImageHelper().updateImageForCollectionViewCell(cell, inCollectionView: collectionView, imageURL: imageUrl, atIndexPath: indexPath)
         return cell
     }
 }

@@ -1,6 +1,6 @@
 //
 //  FeedsViewModel.swift
-//  iOSProficiencyExercise
+//  PublisherFacts
 //
 //  Created by Nischal Hada on 5/27/18.
 //  Copyright © 2018 NischalHada. All rights reserved.
@@ -30,9 +30,17 @@ class FeedsViewModel {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let converter) :
-                    self.dataSource?.data.value = converter.rows
-                    self.title = converter.title
-                    completion?(Result.success(true))
+                    if
+                        let rows = converter.rows,
+                        let title = converter.title
+                    {
+                        self.dataSource?.data.value = rows
+                        self.title = title
+                        completion?(Result.success(true))
+                    } else {
+                        completion?(Result.failure(.custom(string: "Error while parsing json data")))
+                    }
+                    
                     break
                 case .failure(let error) :
                     print("Parser error \(error)")
