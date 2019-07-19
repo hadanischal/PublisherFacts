@@ -1,6 +1,6 @@
 //
 //  FeedsViewControllerTests.swift
-//  iOSProficiencyExerciseTests
+//  PublisherFactsTests
 //
 //  Created by Nischal Hada on 5/27/18.
 //  Copyright © 2018 NischalHada. All rights reserved.

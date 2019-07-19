@@ -1,6 +1,6 @@
 //
 //  ImageManager.swift
-//  iOSProficiencyExercise
+//  PublisherFacts
 //
 //  Created by Nischal Hada on 5/25/18.
 //  Copyright © 2018 NischalHada. All rights reserved.

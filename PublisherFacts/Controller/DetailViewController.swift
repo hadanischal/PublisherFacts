@@ -1,6 +1,6 @@
 //
 //  DetailViewController.swift
-//  iOSProficiencyExercise
+//  PublisherFacts
 //
 //  Created by Nischal Hada on 5/25/18.
 //  Copyright © 2018 NischalHada. All rights reserved.
@@ -62,13 +62,19 @@ extension DetailViewController: UITableViewDataSource {
         if UIDevice.current.orientation.isPortrait {
             let cell = tableView.dequeueReusableCell(withIdentifier: portraitReuseIdentifier, for: indexPath) as! PortraitTableViewCell
             cell.descriptionLabel.text = data.description
-            imageHelper.updateImageForTableViewCell(cell, inTableView: tableView, imageURL: data.imageRef, atIndexPath: indexPath)
+            guard let imageUrl = data.imageHref else {
+                return cell
+            }
+            imageHelper.updateImageForTableViewCell(cell, inTableView: tableView, imageURL: imageUrl, atIndexPath: indexPath)
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: landscapeReuseIdentifier, for: indexPath) as! LandscapeTableViewCell
             cell.descriptionLabel.text = data.description
-            imageHelper.updateImageForTableViewCell(cell, inTableView: tableView, imageURL: data.imageRef, atIndexPath: indexPath)
+            guard let imageUrl = data.imageHref else {
+                return cell
+            }
+            imageHelper.updateImageForTableViewCell(cell, inTableView: tableView, imageURL: imageUrl, atIndexPath: indexPath)
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
             return cell
         }
@@ -101,7 +107,9 @@ extension DetailViewController {
         let visiblePaths = tableView.indexPathsForVisibleRows ?? [IndexPath]()
         for indexPath in visiblePaths {
             let cell = tableView(self.tableView, cellForRowAt: indexPath)
-            imageHelper.updateImageForTableViewCell(cell, inTableView: tableView, imageURL: data.imageRef, atIndexPath: indexPath)
+            if let imageUrl = data.imageHref {
+             imageHelper.updateImageForTableViewCell(cell, inTableView: tableView, imageURL: imageUrl, atIndexPath: indexPath)
+            }
         }
     }
 
