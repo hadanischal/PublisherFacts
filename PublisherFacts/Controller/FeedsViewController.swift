@@ -34,7 +34,7 @@ class FeedsViewController: UIViewController {
     }
     
     func setupUIRefreshControl(){
-        refreshControl.addTarget(self, action: #selector(serviceCall), for: UIControlEvents.valueChanged)
+        refreshControl.addTarget(self, action: #selector(serviceCall), for: UIControl.Event.valueChanged)
         self.collectionView.addSubview(refreshControl)
 
     }
@@ -70,7 +70,7 @@ class FeedsViewController: UIViewController {
 extension FeedsViewController : UICollectionViewDelegateFlowLayout {
     func setupCollectionView() -> Void{
         let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.scrollDirection = UICollectionViewScrollDirection.vertical
+        layout.scrollDirection = UICollectionView.ScrollDirection.vertical
         self.collectionView.collectionViewLayout = layout
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0 //0.0
