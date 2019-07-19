@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol ViewManagers{
+protocol ViewManagers {
     func rootView() -> UIViewController
 }
 
@@ -21,9 +21,7 @@ extension RootViewManager: ViewManagers {
          let controller: FeedsViewController = storyboard.instantiateViewController(withIdentifier: "FeedsViewController") as! FeedsViewController
         let navigationController = UINavigationController(rootViewController: controller)
         return navigationController
-        
+
     }
-    
+
 }
-
-

@@ -7,23 +7,23 @@
 //
 
 import XCTest
-@testable import iOSProficiencyExercise
+@testable import PublisherFacts
 
 class FeedsModelTests: XCTestCase {
-    
+
     override func setUp() {
         super.setUp()
     }
-    
+
     override func tearDown() {
         super.tearDown()
     }
-    
+
     func testExampleEmptyCurrency() {
         let data = Data()
-        let completion : ((Result<FeedsModel, ErrorResult>) -> Void) = { result in
+        let completion: ((Result<FeedsModel, ErrorResult>) -> Void) = { result in
             switch result {
-            case .success(_):
+            case .success:
                 XCTAssert(false, "Expected failure when no data")
             default:
                 break
@@ -31,15 +31,15 @@ class FeedsModelTests: XCTestCase {
         }
         ParserHelper.parse(data: data, completion: completion)
     }
-    
+
     func testParseCurrency() {
         guard let data = FileManager.readJson(forResource: "facts") else {
             XCTAssert(false, "Can't get data from sample.json")
             return
         }
-        let completion : ((Result<FeedsModel, ErrorResult>) -> Void) = { result in
+        let completion: ((Result<FeedsModel, ErrorResult>) -> Void) = { result in
             switch result {
-            case .failure(_):
+            case .failure:
                 XCTAssert(false, "Expected valid converter")
             case .success(let converter):
                 XCTAssertEqual(converter.title, "About Canada", "Expected About Canada base")
@@ -48,17 +48,15 @@ class FeedsModelTests: XCTestCase {
         }
         ParserHelper.parse(data: data, completion: completion)
     }
-    
+
     func testWrongKeyCurrency() {
-        let dictionary = ["testObject" : 123 as AnyObject]
+        let dictionary = ["testObject": 123 as AnyObject]
         let result = FeedsModel.parseObject(dictionary: dictionary)
         switch result {
-        case .success(_):
+        case .success:
             XCTAssert(false, "Expected failure when wrong data")
         default:
             return
         }
     }
 }
-
-

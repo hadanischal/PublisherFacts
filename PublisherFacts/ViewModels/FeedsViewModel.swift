@@ -9,24 +9,24 @@
 import Foundation
 
 class FeedsViewModel {
-    weak var dataSource : GenericDataSource<ListModel>?
+    weak var dataSource: GenericDataSource<ListModel>?
     var cellDidSelect: GenericDataSource<Int>?
     var title: String?
     var selectedData: ListModel?
-    weak var service: FeedsServiceProtocol?
-    
-    init(service: FeedsServiceProtocol, dataSource : GenericDataSource<ListModel>?) {
+    private var service: FeedsServiceProtocol?
+
+    init(service: FeedsServiceProtocol, dataSource: GenericDataSource<ListModel>?) {
         self.dataSource = dataSource
         self.service = service
     }
-    
+
     func fetchServiceCall(_ completion: ((Result<Bool, ErrorResult>) -> Void)? = nil) {
-                
+
         guard let service = service else {
             completion?(Result.failure(ErrorResult.custom(string: "Missing service")))
             return
         }
-        service.fetchConverter { result in
+        service.fetchFeeds { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let converter) :
@@ -42,11 +42,10 @@ class FeedsViewModel {
             }
         }
     }
-    
-    func didSelectItemAt(indexPath: IndexPath){
+
+    func didSelectItemAt(indexPath: IndexPath) {
         let feedsValue = dataSource?.data.value[indexPath.row]
         selectedData = feedsValue
     }
 
 }
-

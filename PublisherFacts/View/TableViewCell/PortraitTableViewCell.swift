@@ -11,7 +11,7 @@ import UIKit
 class PortraitTableViewCell: UITableViewCell {
     @IBOutlet var bannerImage: UIImageView!
     @IBOutlet var descriptionLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.bannerImage.contentMode =   UIView.ContentMode.scaleAspectFill

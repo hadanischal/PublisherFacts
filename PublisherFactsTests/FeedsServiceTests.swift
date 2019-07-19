@@ -7,14 +7,14 @@
 //
 
 import XCTest
-@testable import iOSProficiencyExercise
+@testable import PublisherFacts
 
 class FeedsServiceTests: XCTestCase {
     func testCancelRequest() {
-        let service : FeedsService! = FeedsService()
-        service.fetchConverter{ (_) in
+        let service: FeedsService! = FeedsService()
+        service.fetchFeeds { (_) in
         }
-        service.cancelFetchCurrencies()
+        service.cancelFetchFeeds()
         XCTAssertNil(service.task, "Expected task nil")
     }
 }

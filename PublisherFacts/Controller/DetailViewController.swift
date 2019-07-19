@@ -15,12 +15,12 @@ class DetailViewController: UIViewController {
     var currentDeviceOrientation: UIDeviceOrientation = .unknown
     fileprivate let imageHelper = ImageHelper()
     var data: ListModel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
     }
-    
+
     func setupUI() {
         self.navigationItem.title = data.title
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -36,7 +36,7 @@ class DetailViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(deviceDidRotate), name: UIDevice.orientationDidChangeNotification, object: nil)
         self.currentDeviceOrientation = UIDevice.current.orientation
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
@@ -44,7 +44,7 @@ class DetailViewController: UIViewController {
             UIDevice.current.endGeneratingDeviceOrientationNotifications()
         }
     }
-    
+
     @objc func deviceDidRotate(notification: NSNotification) {
         self.currentDeviceOrientation = UIDevice.current.orientation
         self.tableView.reloadData()
@@ -53,46 +53,46 @@ class DetailViewController: UIViewController {
 
 // MARK: - UITableViewDataSource
 
-extension DetailViewController:UITableViewDataSource {
+extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if UIDevice.current.orientation.isPortrait {
             let cell = tableView.dequeueReusableCell(withIdentifier: portraitReuseIdentifier, for: indexPath) as! PortraitTableViewCell
             cell.descriptionLabel.text = data.description
-            imageHelper.updateImageForTableViewCell(cell, inTableView: tableView, imageURL:data.imageRef, atIndexPath: indexPath)
+            imageHelper.updateImageForTableViewCell(cell, inTableView: tableView, imageURL: data.imageRef, atIndexPath: indexPath)
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
             return cell
-        }else{
+        } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: landscapeReuseIdentifier, for: indexPath) as! LandscapeTableViewCell
             cell.descriptionLabel.text = data.description
-            imageHelper.updateImageForTableViewCell(cell, inTableView: tableView, imageURL:data.imageRef, atIndexPath: indexPath)
+            imageHelper.updateImageForTableViewCell(cell, inTableView: tableView, imageURL: data.imageRef, atIndexPath: indexPath)
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
             return cell
         }
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("tapped")
     }
 }
 
 // MARK: - TableViewDelegate Setup
-extension DetailViewController : UITableViewDelegate{
+extension DetailViewController: UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
-        
+
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
+
 }
 
 // MARK: - UIScrollViewDelegate
@@ -104,11 +104,11 @@ extension DetailViewController {
             imageHelper.updateImageForTableViewCell(cell, inTableView: tableView, imageURL: data.imageRef, atIndexPath: indexPath)
         }
     }
-    
+
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         loadImagesForOnscreenRows()
     }
-    
+
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate { loadImagesForOnscreenRows() }
     }

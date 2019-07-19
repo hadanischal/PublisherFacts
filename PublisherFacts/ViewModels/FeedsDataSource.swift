@@ -17,11 +17,11 @@ class FeedsDataSource: GenericDataSource<ListModel>, UICollectionViewDataSource 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data.value.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! CollectionViewCell
         let feedsValue = self.data.value[indexPath.row]
@@ -30,4 +30,3 @@ class FeedsDataSource: GenericDataSource<ListModel>, UICollectionViewDataSource 
         return cell
     }
 }
-
