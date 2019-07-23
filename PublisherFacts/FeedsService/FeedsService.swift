@@ -8,8 +8,7 @@
 
 import Foundation
 
-
-final class FeedsService: RequestHandler, FeedsServiceProtocol {
+class FeedsService: RequestHandler, FeedsServiceProtocol {
     let endpoint = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
     var task: URLSessionTask?
 

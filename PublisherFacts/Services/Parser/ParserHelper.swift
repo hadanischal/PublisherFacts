@@ -23,9 +23,9 @@ final class ParserHelper {
             break
         }
     }
-    
+
     static func parse<T: Parceable>(data: Data, completion: (Result<T, ErrorResult>) -> Void) {
-        
+
         if
             let response = String(data: data, encoding: String.Encoding.ascii),
             let data = response.data(using: String.Encoding.utf8)

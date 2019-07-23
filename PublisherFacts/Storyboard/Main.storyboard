@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zP2-gM-MI4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zP2-gM-MI4">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Feeds View Controller-->
         <scene sceneID="Wdy-5K-cpf">
             <objects>
-                <viewController storyboardIdentifier="FeedsViewController" id="u5y-Wt-vKm" customClass="FeedsViewController" customModule="iOSProficiencyExercise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FeedsViewController" id="u5y-Wt-vKm" customClass="FeedsViewController" customModule="PublisherFacts" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qoq-l8-g0E"/>
                         <viewControllerLayoutGuide type="bottom" id="KfU-cq-wgL"/>
@@ -32,7 +31,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionViewCell" id="8JU-gF-RJf" customClass="CollectionViewCell" customModule="iOSProficiencyExercise" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionViewCell" id="8JU-gF-RJf" customClass="CollectionViewCell" customModule="PublisherFacts" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="180" height="201"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -90,7 +89,7 @@
                                             <outlet property="titleLabel" destination="b8R-5z-ZIQ" id="ZXm-Fr-cf3"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyCollectionViewCell" id="vpA-F3-Il6" customClass="MyCollectionViewCell" customModule="iOSProficiencyExercise" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyCollectionViewCell" id="vpA-F3-Il6" customClass="MyCollectionViewCell" customModule="PublisherFacts" customModuleProvider="target">
                                         <rect key="frame" x="190" y="18" width="177" height="165"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -126,7 +125,7 @@
         <!--Detail View Controller-->
         <scene sceneID="RK5-hb-U0a">
             <objects>
-                <viewController storyboardIdentifier="DetailViewController" id="KYv-yf-Oes" customClass="DetailViewController" customModule="iOSProficiencyExercise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" id="KYv-yf-Oes" customClass="DetailViewController" customModule="PublisherFacts" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="App-re-CXV"/>
                         <viewControllerLayoutGuide type="bottom" id="YXc-wb-oMI"/>
@@ -139,45 +138,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LandscapeTableViewCell" rowHeight="167" id="wmS-2q-u2J" customClass="LandscapeTableViewCell" customModule="iOSProficiencyExercise" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="167"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wmS-2q-u2J" id="YTh-gl-Jbm">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="166.66666666666666"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="CIA-7E-tJ7">
-                                                    <rect key="frame" x="8" y="8" width="150" height="150"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="150" id="pBg-HW-pf7"/>
-                                                        <constraint firstAttribute="width" constant="150" id="yzv-F3-NWc"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zra-yl-1MP">
-                                                    <rect key="frame" x="166" y="8" width="240" height="151"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="CIA-7E-tJ7" firstAttribute="top" secondItem="YTh-gl-Jbm" secondAttribute="top" constant="8" id="6S7-6A-0j7"/>
-                                                <constraint firstAttribute="bottom" secondItem="CIA-7E-tJ7" secondAttribute="bottom" constant="8" id="GPO-Xg-yhD"/>
-                                                <constraint firstItem="Zra-yl-1MP" firstAttribute="leading" secondItem="CIA-7E-tJ7" secondAttribute="trailing" constant="8" id="Gtm-qa-IrZ"/>
-                                                <constraint firstItem="CIA-7E-tJ7" firstAttribute="leading" secondItem="YTh-gl-Jbm" secondAttribute="leading" constant="8" id="UMu-rr-QyO"/>
-                                                <constraint firstAttribute="bottom" secondItem="Zra-yl-1MP" secondAttribute="bottom" constant="8" id="hLm-T9-Mph"/>
-                                                <constraint firstItem="Zra-yl-1MP" firstAttribute="top" secondItem="YTh-gl-Jbm" secondAttribute="top" constant="8" id="mbG-8U-GU1"/>
-                                                <constraint firstAttribute="trailing" secondItem="Zra-yl-1MP" secondAttribute="trailing" constant="8" id="nrf-eP-yye"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="descriptionLabel" destination="Zra-yl-1MP" id="NH5-xb-HgY"/>
-                                            <outlet property="thumbnailImage" destination="CIA-7E-tJ7" id="p5t-ol-QuR"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PortraitTableViewCell" rowHeight="417" id="22A-ez-fz7" customClass="PortraitTableViewCell" customModule="iOSProficiencyExercise" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="195" width="414" height="417"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PortraitTableViewCell" rowHeight="417" id="22A-ez-fz7" customClass="PortraitTableViewCell" customModule="PublisherFacts" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="417"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="22A-ez-fz7" id="ZwS-Sp-if6">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="416.66666666666669"/>
@@ -190,7 +152,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gf-oH-9mZ">
-                                                    <rect key="frame" x="25" y="328" width="364" height="68"/>
+                                                    <rect key="frame" x="30" y="328" width="354" height="68"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="49" id="1NV-h5-Z7f"/>
                                                     </constraints>
@@ -211,8 +173,45 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="bannerImage" destination="StC-pC-eUW" id="atM-0e-gRX"/>
+                                            <outlet property="bannerImage" destination="StC-pC-eUW" id="Qiw-wq-JdV"/>
                                             <outlet property="descriptionLabel" destination="6gf-oH-9mZ" id="0dK-Iu-Y8g"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LandscapeTableViewCell" rowHeight="167" id="wmS-2q-u2J" customClass="PortraitTableViewCell" customModule="PublisherFacts" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="445" width="414" height="167"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wmS-2q-u2J" id="YTh-gl-Jbm">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="166.66666666666666"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="CIA-7E-tJ7">
+                                                    <rect key="frame" x="8" y="8" width="150" height="150.33333333333334"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="150" id="pBg-HW-pf7"/>
+                                                        <constraint firstAttribute="width" constant="150" id="yzv-F3-NWc"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zra-yl-1MP">
+                                                    <rect key="frame" x="166" y="8" width="240" height="304.66666666666669"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="CIA-7E-tJ7" firstAttribute="top" secondItem="YTh-gl-Jbm" secondAttribute="top" constant="8" id="6S7-6A-0j7"/>
+                                                <constraint firstAttribute="bottom" secondItem="CIA-7E-tJ7" secondAttribute="bottom" constant="8" id="GPO-Xg-yhD"/>
+                                                <constraint firstItem="Zra-yl-1MP" firstAttribute="leading" secondItem="CIA-7E-tJ7" secondAttribute="trailing" constant="8" id="Gtm-qa-IrZ"/>
+                                                <constraint firstItem="CIA-7E-tJ7" firstAttribute="leading" secondItem="YTh-gl-Jbm" secondAttribute="leading" constant="8" id="UMu-rr-QyO"/>
+                                                <constraint firstAttribute="bottom" secondItem="Zra-yl-1MP" secondAttribute="bottom" constant="8" id="hLm-T9-Mph"/>
+                                                <constraint firstItem="Zra-yl-1MP" firstAttribute="top" secondItem="YTh-gl-Jbm" secondAttribute="top" constant="8" id="mbG-8U-GU1"/>
+                                                <constraint firstAttribute="trailing" secondItem="Zra-yl-1MP" secondAttribute="trailing" constant="8" id="nrf-eP-yye"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bannerImage" destination="CIA-7E-tJ7" id="bBV-jH-aDL"/>
+                                            <outlet property="descriptionLabel" destination="Zra-yl-1MP" id="NH5-xb-HgY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
