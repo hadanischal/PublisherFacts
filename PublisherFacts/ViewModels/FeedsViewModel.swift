@@ -8,14 +8,17 @@
 
 import Foundation
 
-class FeedsViewModel {
+class FeedsViewModel: FeedsViewModelProtocol {
+    //Input
+    private var service: FeedsServiceProtocol?
     weak var dataSource: GenericDataSource<ListModel>?
+    
+    //Output
     var cellDidSelect: GenericDataSource<Int>?
     var title: String?
     var selectedData: ListModel?
-    private var service: FeedsServiceProtocol?
 
-    init(service: FeedsServiceProtocol, dataSource: GenericDataSource<ListModel>?) {
+    init(withService service: FeedsServiceProtocol, withDataSource dataSource: GenericDataSource<ListModel>?) {
         self.dataSource = dataSource
         self.service = service
     }
@@ -40,7 +43,7 @@ class FeedsViewModel {
                     } else {
                         completion?(Result.failure(.custom(string: "Error while parsing json data")))
                     }
-                    
+
                     break
                 case .failure(let error) :
                     print("Parser error \(error)")

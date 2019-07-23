@@ -16,8 +16,8 @@ class FeedsViewController: UIViewController {
     private let refreshControl = UIRefreshControl()
     fileprivate var service: FeedsService! = FeedsService()
     let dataSource = FeedsDataSource()
-    lazy var viewModel: FeedsViewModel = {
-        let viewModel = FeedsViewModel(service: service, dataSource: dataSource)
+    lazy var viewModel: FeedsViewModelProtocol = {
+        let viewModel = FeedsViewModel(withService: service, withDataSource: dataSource)
         return viewModel
     }()
 
