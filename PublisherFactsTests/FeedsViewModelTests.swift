@@ -10,37 +10,27 @@ import XCTest
 @testable import PublisherFacts
 
 class FeedsViewModelTests: XCTestCase {
-    fileprivate class MockFeedsService: FeedsServiceProtocol {
-        var feedsData: FeedsModel?
-        func fetchFeeds(_ completion: @escaping ((Result<FeedsModel, ErrorResult>) -> Void)) {
-            if let data = feedsData {
-                completion(Result.success(data))
-            } else {
-                completion(Result.failure(ErrorResult.custom(string: "No converter")))
-            }
-        }
-    }
 
     var viewModel: FeedsViewModel!
-    var dataSource: GenericDataSource<ListModel>!
-    fileprivate var service: MockFeedsService!
+    private var mockDataSource: GenericDataSource<ListModel>!
+    private var mockService: MockFeedsService!
 
     override func setUp() {
         super.setUp()
-        self.service = MockFeedsService()
-        self.dataSource = GenericDataSource<ListModel>()
-        self.viewModel = FeedsViewModel(service: service, dataSource: dataSource)
+        self.mockService = MockFeedsService()
+        self.mockDataSource = GenericDataSource<ListModel>()
+        self.viewModel = FeedsViewModel(withService: mockService, withDataSource: mockDataSource)
     }
 
     override func tearDown() {
         self.viewModel = nil
-        self.dataSource = nil
-        self.service = nil
+        self.mockDataSource = nil
+        self.mockService = nil
         super.tearDown()
     }
 
     func testFetchFeeds() {
-        service.feedsData = FeedsModel(title: "Canada", rows: [])
+        mockService.feedsData = FeedsModel(title: "Canada", rows: [])
         viewModel.fetchServiceCall { result in
             switch result {
             case .failure :
@@ -51,7 +41,7 @@ class FeedsViewModelTests: XCTestCase {
     }
 
     func testFetchNoFeeds() {
-        service.feedsData = nil
+        mockService.feedsData = nil
         viewModel.fetchServiceCall { result in
             switch result {
             case .success :

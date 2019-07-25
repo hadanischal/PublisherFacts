@@ -7,3 +7,15 @@
 //
 
 import Foundation
+@testable import PublisherFacts
+
+class MockFeedsService: FeedsServiceProtocol {
+    var feedsData: FeedsModel?
+    func fetchFeeds(_ completion: @escaping ((Result<FeedsModel, ErrorResult>) -> Void)) {
+        if let data = feedsData {
+            completion(Result.success(data))
+        } else {
+            completion(Result.failure(ErrorResult.custom(string: "No converter")))
+        }
+    }
+}

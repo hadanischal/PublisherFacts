@@ -13,6 +13,8 @@
 		AF36B80922E48F3600B850DD /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF36B80822E48F3600B850DD /* DetailViewModel.swift */; };
 		AF36B80B22E48F5700B850DD /* DetailViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF36B80A22E48F5700B850DD /* DetailViewModelProtocol.swift */; };
 		AF36B80D22E4912300B850DD /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF36B80C22E4912300B850DD /* Dynamic.swift */; };
+		AF36B81022E49BD100B850DD /* MockFeedsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF36B80F22E49BD100B850DD /* MockFeedsService.swift */; };
+		AF36B81222E49BF600B850DD /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF36B81122E49BF600B850DD /* MockData.swift */; };
 		AF9E2CEB22E1EA0300A520E3 /* PublisherFacts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF9E2CE922E1EA0300A520E3 /* PublisherFacts.xcdatamodeld */; };
 		AF9E2CFB22E1EA0600A520E3 /* PublisherFactsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9E2CFA22E1EA0600A520E3 /* PublisherFactsTests.swift */; };
 		AF9E2D0622E1EA0600A520E3 /* PublisherFactsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9E2D0522E1EA0600A520E3 /* PublisherFactsUITests.swift */; };
@@ -83,6 +85,8 @@
 		AF36B80822E48F3600B850DD /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		AF36B80A22E48F5700B850DD /* DetailViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelProtocol.swift; sourceTree = "<group>"; };
 		AF36B80C22E4912300B850DD /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
+		AF36B80F22E49BD100B850DD /* MockFeedsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFeedsService.swift; sourceTree = "<group>"; };
+		AF36B81122E49BF600B850DD /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		AF9E2CDF22E1EA0300A520E3 /* PublisherFacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PublisherFacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF9E2CEA22E1EA0300A520E3 /* PublisherFacts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PublisherFacts.xcdatamodel; sourceTree = "<group>"; };
 		AF9E2CF122E1EA0600A520E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -174,6 +178,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		AF36B80E22E49BC000B850DD /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				AF9E2D6422E1EB5300A520E3 /* facts.json */,
+				AF36B80F22E49BD100B850DD /* MockFeedsService.swift */,
+				AF36B81122E49BF600B850DD /* MockData.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		AF9E2CD622E1EA0300A520E3 = {
 			isa = PBXGroup;
 			children = (
@@ -223,14 +237,14 @@
 		AF9E2CF922E1EA0600A520E3 /* PublisherFactsTests */ = {
 			isa = PBXGroup;
 			children = (
-				AF9E2D6822E1EB5300A520E3 /* DetailViewControllerTests.swift */,
-				AF9E2D6422E1EB5300A520E3 /* facts.json */,
+				AF36B80E22E49BC000B850DD /* Mocks */,
+				AF9E2D6222E1EB5300A520E3 /* FeedsViewModelTests.swift */,
 				AF9E2D6722E1EB5300A520E3 /* FeedsDataSourceTests.swift */,
 				AF9E2D6522E1EB5300A520E3 /* FeedsModelTests.swift */,
 				AF9E2D6622E1EB5300A520E3 /* FeedsServiceTests.swift */,
 				AF9E2D6322E1EB5300A520E3 /* FeedsViewControllerTests.swift */,
-				AF9E2D6222E1EB5300A520E3 /* FeedsViewModelTests.swift */,
 				AF9E2CFA22E1EA0600A520E3 /* PublisherFactsTests.swift */,
+				AF9E2D6822E1EB5300A520E3 /* DetailViewControllerTests.swift */,
 				AF9E2CFC22E1EA0600A520E3 /* Info.plist */,
 			);
 			path = PublisherFactsTests;
@@ -671,6 +685,8 @@
 				AF9E2D6E22E1EB5300A520E3 /* FeedsDataSourceTests.swift in Sources */,
 				AF9E2D6922E1EB5300A520E3 /* FeedsViewModelTests.swift in Sources */,
 				AF9E2CFB22E1EA0600A520E3 /* PublisherFactsTests.swift in Sources */,
+				AF36B81022E49BD100B850DD /* MockFeedsService.swift in Sources */,
+				AF36B81222E49BF600B850DD /* MockData.swift in Sources */,
 				AF9E2D6A22E1EB5300A520E3 /* FeedsViewControllerTests.swift in Sources */,
 				AF9E2D6F22E1EB5300A520E3 /* DetailViewControllerTests.swift in Sources */,
 				AF9E2D6C22E1EB5300A520E3 /* FeedsModelTests.swift in Sources */,

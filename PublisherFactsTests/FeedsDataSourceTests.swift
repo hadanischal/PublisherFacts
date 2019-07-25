@@ -32,7 +32,7 @@ class FeedsDataSourceTests: XCTestCase {
     }
 
     func testValueInDataSource() {
-        let responseResults: [ListModel] = getDataValue()
+        let responseResults: [ListModel] = MockData().getFeedslist()
         dataSource.data.value = responseResults
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 100, height: 100), collectionViewLayout: layout)
@@ -43,7 +43,7 @@ class FeedsDataSourceTests: XCTestCase {
     }
 
     func testValueCell() {
-        dataSource.data.value = getDataValue()
+        dataSource.data.value = MockData().getFeedslist()
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: UIDevice.current.accessibilityFrame, collectionViewLayout: layout)
         collectionView.dataSource = dataSource
@@ -54,38 +54,5 @@ class FeedsDataSourceTests: XCTestCase {
             return
         }
     }
-
-    func getDataValue() -> [ListModel] {
-        var responseResults = [ListModel]()
-        guard let data = FileManager.readJson(forResource: "facts") else {
-            XCTAssert(false, "Can't get data from facts.json")
-            return responseResults
-        }
-        let completion: ((Result<FeedsModel, ErrorResult>) -> Void) = { result in
-            switch result {
-            case .failure:
-                XCTAssert(false, "Expected valid converter")
-            case .success(let converter):
-                print(converter)
-                responseResults = converter.rows
-                break
-            }
-        }
-        ParserHelper.parse(data: data, completion: completion)
-        return responseResults
-    }
-
 }
-extension FileManager {
-    static func readJson(forResource fileName: String ) -> Data? {
-        let bundle = Bundle(for: FeedsDataSourceTests.self)
-        if let path = bundle.path(forResource: fileName, ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                return data
-            } catch {
-            }
-        }
-        return nil
-    }
-}
+
