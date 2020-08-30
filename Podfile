@@ -6,7 +6,7 @@ target 'PublisherFacts' do
   use_frameworks!
 
   # Pods for PublisherFacts
-pod 'SwiftLint'
+  pod 'SwiftLint'
 
   target 'PublisherFactsTests' do
     inherit! :search_paths

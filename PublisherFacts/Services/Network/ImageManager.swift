@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ImageManaging: class {
+protocol ImageManaging: AnyObject {
     func downloadImageFromURL(_ urlString: String, completion: ((_ success: Bool, _ image: UIImage?) -> Void)?)
 }
 
@@ -28,7 +28,7 @@ class ImageManager: NSObject {
     func downloadImageFromURL(_ urlString: String, completion: ((_ success: Bool, _ image: UIImage?) -> Void)?) {
         // do we have this cached?
         if let cachedImage = cachedImageForURL(urlString) {
-            DispatchQueue.main.async(execute: {completion?(true, cachedImage) })
+            DispatchQueue.main.async(execute: { completion?(true, cachedImage) })
         } else if let url = URL(string: urlString) { // download from URL asynchronously
             let session = URLSession.shared
             let downloadTask = session.downloadTask(with: url, completionHandler: { (retrievedURL, _, error) -> Void in
@@ -42,10 +42,9 @@ class ImageManager: NSObject {
                         }
                     }
                 }
-                if !found { DispatchQueue.main.async(execute: { completion?(false, nil) }); }
+                if !found { DispatchQueue.main.async(execute: { completion?(false, nil) }) }
             })
             downloadTask.resume()
         } else { completion?(false, nil) }
     }
-
 }

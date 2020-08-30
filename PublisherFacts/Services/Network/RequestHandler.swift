@@ -15,13 +15,11 @@ class RequestHandler {
             return { dataResult in
                 DispatchQueue.global(qos: .background).async(execute: {
                     switch dataResult {
-                    case .success(let data) :
+                    case let .success(data):
                         ParserHelper.parse(data: data, completion: completion)
-                        break
-                    case .failure(let error) :
+                    case let .failure(error):
                         print("Network error \(error)")
                         completion(.failure(.network(string: "Network error " + error.localizedDescription)))
-                        break
                     }
                 })
             }
@@ -33,13 +31,11 @@ class RequestHandler {
                 print(dataResult)
                 DispatchQueue.global(qos: .background).async(execute: {
                     switch dataResult {
-                    case .success(let data) :
+                    case let .success(data):
                         ParserHelper.parse(data: data, completion: completion)
-                        break
-                    case .failure(let error) :
+                    case let .failure(error):
                         print("Network error \(error)")
                         completion(.failure(.network(string: "Network error " + error.localizedDescription)))
-                        break
                     }
                 })
             }

@@ -9,13 +9,12 @@
 import Foundation
 import UIKit
 
-public protocol ImageSession: class {
+protocol ImageHelperProtocol: AnyObject {
     func updateImageForTableViewCell(_ cell: UITableViewCell, inTableView tableView: UITableView, imageURL: String, atIndexPath indexPath: IndexPath)
     func updateImageForCollectionViewCell(_ cell: UICollectionViewCell, inCollectionView collectionView: UICollectionView, imageURL: String, atIndexPath indexPath: IndexPath)
-
 }
 
-class ImageHelper: ImageSession {
+final class ImageHelper: ImageHelperProtocol {
     fileprivate let kLazyLoadCellImageViewTag = 1
     fileprivate let kLazyLoadPlaceholderImage = UIImage(named: "placeholder")!
     var imageManager: ImageManager { return ImageManager() }
@@ -24,7 +23,7 @@ class ImageHelper: ImageSession {
         let imageView = cell.viewWithTag(kLazyLoadCellImageViewTag) as? UIImageView
         imageView?.image = kLazyLoadPlaceholderImage
         imageManager.downloadImageFromURL(imageURL) { (success, image) -> Void in
-            if success && image != nil {
+            if success, image != nil {
                 if (collectionView.indexPath(for: cell) as NSIndexPath?)?.row == (indexPath as NSIndexPath).row {
                     imageView?.image = image
                 }
@@ -36,7 +35,7 @@ class ImageHelper: ImageSession {
         let imageView = cell.viewWithTag(kLazyLoadCellImageViewTag) as? UIImageView
         imageView?.image = kLazyLoadPlaceholderImage
         imageManager.downloadImageFromURL(imageURL) { (success, image) -> Void in
-            if success && image != nil {
+            if success, image != nil {
                 if (tableView.indexPath(for: cell) as NSIndexPath?)?.row == (indexPath as NSIndexPath).row {
                     imageView?.image = image
                 }

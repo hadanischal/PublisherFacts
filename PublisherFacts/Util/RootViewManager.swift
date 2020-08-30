@@ -13,7 +13,7 @@ protocol ViewManagers {
     func rootView() -> UIViewController
 }
 
-class RootViewManager { }
+class RootViewManager {}
 
 extension RootViewManager: ViewManagers {
     func rootView() -> UIViewController {
@@ -21,7 +21,5 @@ extension RootViewManager: ViewManagers {
          let controller: FeedsViewController = storyboard.instantiateViewController(withIdentifier: "FeedsViewController") as! FeedsViewController
         let navigationController = UINavigationController(rootViewController: controller)
         return navigationController
-
     }
-
 }

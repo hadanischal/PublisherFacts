@@ -6,8 +6,8 @@
 //  Copyright © 2018 NischalHada. All rights reserved.
 //
 
-import XCTest
 @testable import PublisherFacts
+import XCTest
 
 class FeedsDataSourceTests: XCTestCase {
     var dataSource: FeedsDataSource!
@@ -49,10 +49,9 @@ class FeedsDataSourceTests: XCTestCase {
         collectionView.dataSource = dataSource
         collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "collectionViewCell")
         let indexPath = IndexPath(row: 0, section: 0)
-        guard let _ = dataSource.collectionView(collectionView, cellForItemAt: indexPath)as? CollectionViewCell else {
+        guard let _ = dataSource.collectionView(collectionView, cellForItemAt: indexPath) as? CollectionViewCell else {
             XCTAssert(false, "Expected collectionViewCell class")
             return
         }
     }
 }
-
