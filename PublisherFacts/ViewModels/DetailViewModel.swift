@@ -9,17 +9,19 @@
 import Foundation
 
 class DetailViewModel: DetailViewModelProtocol {
-    //outut
+    // output
     var title: Dynamic<String?>
-    var description: Dynamic<String?>
-    var imageHref: Dynamic<String?>
-    //input
+
+    // input
     private let data: ListModel?
-    
-    init(withListModel dataList: ListModel) {
+    private var dataSource: GenericDetailDataSource<ListModel>?
+
+    init(withListModel dataList: ListModel, withDataSource dataSource: GenericDetailDataSource<ListModel>?) {
         self.data = dataList
         self.title = Dynamic(self.data?.title)
-        self.description = Dynamic(self.data?.description)
-        self.imageHref = Dynamic(self.data?.imageHref)
+        self.dataSource = dataSource
+        if let value = self.data {
+            self.dataSource?.data.value = [value]
+        }
     }
 }

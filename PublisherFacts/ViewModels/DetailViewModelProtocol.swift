@@ -10,6 +10,4 @@ import Foundation
 
 protocol DetailViewModelProtocol {
     var title: Dynamic<String?> { get }
-    var description: Dynamic<String?> { get }
-    var imageHref: Dynamic<String?> { get }
 }

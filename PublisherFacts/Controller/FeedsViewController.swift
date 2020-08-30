@@ -28,6 +28,9 @@ class FeedsViewController: UIViewController {
         self.dataSource.data.addAndNotify(observer: self) { [weak self] in
             self?.collectionView.reloadData()
         }
+        self.viewModel.title.bindAndFire({ [weak self] in
+            self?.title = $0
+        })
         self.setupUIRefreshControl()
         self.serviceCall()
 
@@ -44,7 +47,6 @@ class FeedsViewController: UIViewController {
             self.viewModel.fetchServiceCall { result in
                 switch result {
                 case .success :
-                    self.title = self.viewModel.title
                     break
                 case .failure :
                     break

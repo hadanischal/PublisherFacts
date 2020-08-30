@@ -9,22 +9,22 @@
 import Foundation
 
 class FeedsViewModel: FeedsViewModelProtocol {
-    //Input
+    // Input
     private var service: FeedsServiceProtocol?
     weak var dataSource: GenericDataSource<ListModel>?
-    
-    //Output
+
+    // Output
     var cellDidSelect: GenericDataSource<Int>?
-    var title: String?
+    var title: Dynamic<String>
     var selectedData: ListModel?
 
     init(withService service: FeedsServiceProtocol, withDataSource dataSource: GenericDataSource<ListModel>?) {
         self.dataSource = dataSource
         self.service = service
+        self.title = Dynamic("")
     }
 
     func fetchServiceCall(_ completion: ((Result<Bool, ErrorResult>) -> Void)? = nil) {
-
         guard let service = service else {
             completion?(Result.failure(ErrorResult.custom(string: "Missing service")))
             return
@@ -32,23 +32,20 @@ class FeedsViewModel: FeedsViewModelProtocol {
         service.fetchFeeds { result in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let converter) :
+                case let .success(converter):
                     if
                         let rows = converter.rows,
-                        let title = converter.title
-                    {
+                        let title = converter.title {
                         self.dataSource?.data.value = rows
-                        self.title = title
+                        self.title.value = title
                         completion?(Result.success(true))
                     } else {
                         completion?(Result.failure(.custom(string: "Error while parsing json data")))
                     }
 
-                    break
-                case .failure(let error) :
+                case let .failure(error):
                     print("Parser error \(error)")
                     completion?(Result.failure(error))
-                    break
                 }
             }
         }
@@ -58,5 +55,4 @@ class FeedsViewModel: FeedsViewModelProtocol {
         let feedsValue = dataSource?.data.value[indexPath.row]
         selectedData = feedsValue
     }
-
 }

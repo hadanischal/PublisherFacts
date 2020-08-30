@@ -9,10 +9,9 @@
 import Foundation
 
 protocol FeedsViewModelProtocol {
-    var title: String? { get set }
-    var cellDidSelect: GenericDataSource<Int>? { get set }
+    var title: Dynamic<String> { get }
     var selectedData: ListModel? { get set }
-    
+
     func fetchServiceCall(_ completion: ((Result<Bool, ErrorResult>) -> Void)?)
     func didSelectItemAt(indexPath: IndexPath)
 }

@@ -9,23 +9,19 @@
 import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var bagroundView: UIView!
+    @IBOutlet var bagroundView: UIView!
     @IBOutlet var titleLabel: UILabel?
     @IBOutlet var rowImage: UIImageView?
 
-    var feedsValue: ListModel? {
-        didSet {
-            guard let feeds = feedsValue else {
-                return
-            }
-            titleLabel?.text = feeds.title
-        }
-    }
-
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.bagroundView.backgroundColor = ThemeColor.contentViewBackgroundColor
-        self.rowImage?.contentMode =   UIView.ContentMode.scaleAspectFill
-        self.rowImage? .clipsToBounds =  true
+        bagroundView.backgroundColor = ThemeColor.contentViewBackgroundColor
+        rowImage?.contentMode = UIView.ContentMode.scaleAspectFill
+        rowImage?.clipsToBounds = true
+    }
+
+    func configure(_ model: ListModel?) {
+        guard let feeds = model else { return }
+        titleLabel?.text = feeds.title
     }
 }

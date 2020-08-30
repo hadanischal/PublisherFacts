@@ -58,6 +58,7 @@
 		AF9E2D6F22E1EB5300A520E3 /* DetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9E2D6822E1EB5300A520E3 /* DetailViewControllerTests.swift */; };
 		AF9E2D7122E1ED3D00A520E3 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = AF9E2D7022E1ED3D00A520E3 /* .swiftlint.yml */; };
 		AF9E2D7322E1EDF600A520E3 /* FeedsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9E2D7222E1EDF600A520E3 /* FeedsServiceProtocol.swift */; };
+		AFB7BBAF24FB59C80060BAB0 /* DetailViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB7BBAE24FB59C80060BAB0 /* DetailViewDataSource.swift */; };
 		D034D10CC89D0EAFFA3667C1 /* Pods_PublisherFactsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CA44C9ADCDE40A24D3722D4 /* Pods_PublisherFactsUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -140,6 +141,7 @@
 		AF9E2D6822E1EB5300A520E3 /* DetailViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewControllerTests.swift; sourceTree = "<group>"; };
 		AF9E2D7022E1ED3D00A520E3 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		AF9E2D7222E1EDF600A520E3 /* FeedsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsServiceProtocol.swift; sourceTree = "<group>"; };
+		AFB7BBAE24FB59C80060BAB0 /* DetailViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewDataSource.swift; sourceTree = "<group>"; };
 		BC324923F22ECD007039C090 /* Pods-PublisherFactsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PublisherFactsTests.debug.xcconfig"; path = "Target Support Files/Pods-PublisherFactsTests/Pods-PublisherFactsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D062CDA5754791787173800D /* Pods-PublisherFactsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PublisherFactsUITests.release.xcconfig"; path = "Target Support Files/Pods-PublisherFactsUITests/Pods-PublisherFactsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		ED67996A46F4D76446553307 /* Pods-PublisherFactsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PublisherFactsTests.release.xcconfig"; path = "Target Support Files/Pods-PublisherFactsTests/Pods-PublisherFactsTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -438,6 +440,7 @@
 				AF9E2D4222E1EB3400A520E3 /* FeedsDataSource.swift */,
 				AF36B80A22E48F5700B850DD /* DetailViewModelProtocol.swift */,
 				AF36B80822E48F3600B850DD /* DetailViewModel.swift */,
+				AFB7BBAE24FB59C80060BAB0 /* DetailViewDataSource.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -670,6 +673,7 @@
 				AF36B80D22E4912300B850DD /* Dynamic.swift in Sources */,
 				AF9E2D5D22E1EB3400A520E3 /* DynamicValue.swift in Sources */,
 				AF9E2D5F22E1EB3400A520E3 /* AppDelegate.swift in Sources */,
+				AFB7BBAF24FB59C80060BAB0 /* DetailViewDataSource.swift in Sources */,
 				AF9E2D5522E1EB3400A520E3 /* ErrorResult.swift in Sources */,
 				AF9E2CEB22E1EA0300A520E3 /* PublisherFacts.xcdatamodeld in Sources */,
 				AF9E2D5422E1EB3400A520E3 /* Result.swift in Sources */,

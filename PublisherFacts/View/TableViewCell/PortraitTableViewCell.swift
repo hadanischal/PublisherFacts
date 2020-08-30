@@ -17,4 +17,9 @@ class PortraitTableViewCell: UITableViewCell {
         self.bannerImage.contentMode = UIView.ContentMode.scaleAspectFill
         self.bannerImage.clipsToBounds = true
     }
+
+    func configure(_ model: ListModel?) {
+        guard let feeds = model else { return }
+        descriptionLabel?.text = feeds.description
+    }
 }
